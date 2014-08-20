@@ -69,6 +69,7 @@ class MonoPackageManager_Resources {
 		"Mobile.Android.dll",
 		"Doloco.dll",
 		"GooglePlayServicesLib.dll",
+		"Mindscape.Raygun4Net.Xamarin.Android.dll",
 		"Xamarin.Android.Support.v4.dll",
 		"Xamarin.Android.Support.v7.AppCompat.dll",
 		"Xamarin.Android.Support.v7.MediaRouter.dll",

@@ -1,3 +1,4 @@
+C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\obj\Debug\android\bin\Mobile.Android.apk
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Mobile.Android.dll
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Mobile.Android.pdb
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Mobile.Android.dll.mdb
@@ -5,6 +6,7 @@ C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Mobile
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Mobile.Android-Signed.apk
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Doloco.dll
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\GooglePlayServicesLib.dll
+C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Mindscape.Raygun4Net.Xamarin.Android.dll
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Xamarin.Android.Support.v4.dll
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Xamarin.Android.Support.v7.AppCompat.dll
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Xamarin.Android.Support.v7.MediaRouter.dll
@@ -17,6 +19,8 @@ C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Doloco
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Newtonsoft.Json.dll
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Doloco.pdb
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Doloco.dll.mdb
+C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Mindscape.Raygun4Net.Xamarin.Android.pdb
+C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Mindscape.Raygun4Net.Xamarin.Android.dll.mdb
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Xamarin.Forms.Core.xml
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Xamarin.Forms.Xaml.xml
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Xamarin.Forms.Maps.xml
@@ -26,7 +30,6 @@ C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Newton
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\obj\Debug\Doloco.Android.csprojResolveAssemblyReference.cache
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\obj\Debug\Mobile.Android.dll
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\obj\Debug\Mobile.Android.pdb
-C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\obj\Debug\android\bin\Mobile.Android.apk
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\obj\Debug\res\drawable\icon.png
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\obj\Debug\R.cs.flag
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\obj\Debug\uploadflags.txt

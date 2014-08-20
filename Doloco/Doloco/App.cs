@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Doloco.Pages;
+using DolocoApiClient;
 using Xamarin.Forms;
 
 namespace Doloco
@@ -12,10 +14,14 @@ namespace Doloco
         static Assembly _reflectionAssembly;
         internal static IDictionary<Type,Type> TypeMap;
         internal static readonly MethodInfo GetDependency;
+        public static INavigation Navigation { get; private set; }
+	    public static readonly IDolocoApiClient ApiClient;
+	    public static string Token;
 
         static App()
         {
-            TypeMap = new Dictionary<Type, Type>{};
+            ApiClient = new DolocoApiClient.DolocoApiClient("http://dolocony.asuscomm.com:3000/api/v1");
+            Token = null;
 
             GetDependency = typeof(DependencyService)
                 .GetRuntimeMethods()

@@ -56,8 +56,29 @@ namespace Doloco.ViewModel
 
         protected async Task ExecuteLoginCommand()
         {
-            Debug.WriteLine(_username);
-            Debug.WriteLine(_password);
+            if (IsLoading)
+                return;
+
+            IsLoading = true;
+
+            try
+            {
+                Debug.WriteLine(_username);
+                Debug.WriteLine(_password);
+
+                var token = await App.ApiClient.CreateSessionAsync(_username, _password);
+
+                App.Token = token;
+
+                await _navigation.PushAsync(new RootPage());
+            }
+            catch (Exception ex)
+            {
+                var page = new ContentPage();
+                var result = page.DisplayAlert("Error", ex.Message, "OK", "Cancel");
+            }
+
+            IsLoading = false;
         }
 
         protected async Task ExecuteRegisterCommand()

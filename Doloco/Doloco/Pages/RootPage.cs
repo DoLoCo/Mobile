@@ -11,14 +11,16 @@ namespace Doloco.Pages
     public class RootPage : MasterDetailPage
     {
         OptionItem previousItem;
-        private OptionItem loginOption;
 
         public RootPage()
         {
-            var apiClient = new DolocoApiClient.DolocoApiClient("http://dolocony.asuscomm.com:3000/api/v1");
-            loginOption = new LoginOptionItem();
-            Master = PageForOption(loginOption);
-            Detail = PageForOption(loginOption);
+            var optionsPage = new MenuPage { Icon = "Icon.png", Title = "menu" };
+
+            optionsPage.Menu.ItemSelected += (sender, e) => NavigateTo(e.SelectedItem as OptionItem);
+
+            Master = optionsPage;
+
+            NavigateTo(optionsPage.Menu.ItemsSource.Cast<OptionItem>().First());
         }
 
         void NavigateTo(OptionItem option)
@@ -33,14 +35,13 @@ namespace Doloco.Pages
 
             Detail = new NavigationPage(displayPage);
 
-
             IsPresented = false;
         }
 
         Page PageForOption(OptionItem option)
         {
-            if (option.Title == "Login")
-                return new MasterPage<LoginPage>(option);
+            if (option.Title == "Home")
+                return new MasterPage<HomePage>(option);
 
             throw new NotImplementedException("Unknown menu option: " + option.Title);
         }

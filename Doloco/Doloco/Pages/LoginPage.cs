@@ -14,8 +14,6 @@ namespace Doloco.Pages
         {
             BindingContext = new LoginViewModel(Navigation);
 
-            BackgroundColor = Helpers.Color.Blue.ToFormsColor();
-
             var layout = new StackLayout();
 
             var label = new Label
@@ -38,8 +36,6 @@ namespace Doloco.Pages
             password.SetBinding(Entry.TextProperty, LoginViewModel.PasswordPropertyName);
             layout.Children.Add(password);
 
-
-
             var signIn = new Button { Text = "Sign In", TextColor = Color.White };
             signIn.SetBinding(Button.CommandProperty, LoginViewModel.LoginCommandPropertyName);
 
@@ -49,7 +45,7 @@ namespace Doloco.Pages
             layout.Children.Add(signIn);
             layout.Children.Add(register);
 
-            Content = layout;
+            Content = new ScrollView { Content = layout };
         }
     }
 }

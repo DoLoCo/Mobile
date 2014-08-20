@@ -7,41 +7,17 @@ using Xamarin.Forms;
 
 namespace Doloco.Models
 {
-    public class LoginOptionItem : OptionItem
+    public class HomeOptionItem : OptionItem
     {
         public override string Title
         {
-            get { return "Login"; }
+            get { return "Home"; }
         }
 
         public override string Icon
         {
             get { return "Icon.png"; }
         }
-    }
-
-    public class OpportunitiesOptionItem : OptionItem
-    {
-        public override string Title { get { return "Opportunities"; } }
-        public override string Icon { get { return "opportunity.png"; } }
-    }
-
-    public class ContactsOptionItem : OptionItem
-    {
-        public override string Title { get { return "Contacts"; } }
-        public override string Icon { get { return "contact.png"; } }
-    }
-
-    public class LeadsOptionItem : OptionItem
-    {
-        public override string Title { get { return "Leads"; } }
-        public override string Icon { get { return "lead.png"; } }
-    }
-
-    public class AccountsOptionItem : OptionItem
-    {
-        public override string Title { get { return "Accounts"; } }
-        public override string Icon { get { return "account.png"; } }
     }
 
     public class OptionItem

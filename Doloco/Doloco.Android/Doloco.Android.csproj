@@ -50,6 +50,9 @@
     </JavaOptions>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Mindscape.Raygun4Net.Xamarin.Android">
+      <HintPath>..\..\packages\Mindscape.Raygun4Net.3.2.0\lib\MonoAndroid2.2\Mindscape.Raygun4Net.Xamarin.Android.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />

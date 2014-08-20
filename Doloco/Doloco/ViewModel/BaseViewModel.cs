@@ -31,6 +31,7 @@ namespace Doloco.ViewModel
 
         public BaseViewModel()
         {
+            IsLoading = false;
             Title = typeof(T).Name;
             Icon = string.Format(IconFormat, Title).ToLower();
             Models = new System.Collections.ObjectModel.ObservableCollection<T>();
@@ -67,14 +68,14 @@ namespace Doloco.ViewModel
         {
         }
 
-        private bool _isLoading;
+        private bool isLoading = false;
         public const string IsLoadingPropertyName = "IsLoading";
         public bool IsLoading
         {
-            get { return _isLoading; }
+            get { return isLoading; }
             set
             {
-                SetProperty(ref _isLoading, value, IsLoadingPropertyName);
+                SetProperty(ref isLoading, value, IsLoadingPropertyName);
             }
         }
 

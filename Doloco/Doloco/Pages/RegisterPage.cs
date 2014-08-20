@@ -13,9 +13,12 @@ namespace Doloco.Pages
         public RegisterPage()
         {
             BindingContext = new RegisterViewModel(Navigation);
-            BackgroundColor = Helpers.Color.Blue.ToFormsColor();
 
             var layout = new StackLayout();
+            var isLoading = new ActivityIndicator();
+            isLoading.SetBinding(ActivityIndicator.IsRunningProperty, RegisterViewModel.IsLoadingPropertyName);
+            isLoading.SetBinding(IsVisibleProperty, RegisterViewModel.IsLoadingPropertyName);
+            layout.Children.Add(isLoading);
 
             var email = new Entry { Placeholder = "Email" };
             email.SetBinding(Entry.TextProperty, RegisterViewModel.EmailPropertyName);
@@ -39,10 +42,6 @@ namespace Doloco.Pages
 
             var register = new Button { Text = "Register", TextColor = Color.White };
             register.SetBinding(Button.CommandProperty, RegisterViewModel.RegisterCommandPropertyName);
-
-            var isLoading = new ActivityIndicator();
-            isLoading.SetBinding(ActivityIndicator.IsRunningProperty, RegisterViewModel.IsLoadingPropertyName);
-            isLoading.SetBinding(IsVisibleProperty, RegisterViewModel.IsLoadingPropertyName);
 
             layout.Children.Add(register);
 

@@ -1,6 +1,7 @@
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Mobile.Android.dll
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco\bin\Debug\Doloco.dll
 C:\Users\billpull\Documents\GitHub\Mobile\packages\Xamarin.GooglePlayServices.16.0.0\lib\MonoAndroid10\GooglePlayServicesLib.dll
+C:\Users\billpull\Documents\GitHub\Mobile\packages\Mindscape.Raygun4Net.3.2.0\lib\MonoAndroid2.2\Mindscape.Raygun4Net.Xamarin.Android.dll
 C:\Users\billpull\Documents\GitHub\Mobile\packages\Xamarin.Android.Support.v4.19.1.0\lib\MonoAndroid10\Xamarin.Android.Support.v4.dll
 C:\Users\billpull\Documents\GitHub\Mobile\packages\Xamarin.Android.Support.v7.AppCompat.19.1.0\lib\MonoAndroid10\Xamarin.Android.Support.v7.AppCompat.dll
 C:\Users\billpull\Documents\GitHub\Mobile\packages\Xamarin.Android.Support.v7.MediaRouter.19.1.0\lib\MonoAndroid10\Xamarin.Android.Support.v7.MediaRouter.dll

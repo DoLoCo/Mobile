@@ -25,7 +25,7 @@ namespace Doloco.ViewModel
             set { SetProperty(ref _email, value, EmailPropertyName); }
         }
 
-        public const string FirstNamePropertyName = "Firstname";
+        public const string FirstNamePropertyName = "FirstName";
         private string _firstName = string.Empty;
         public string FirstName
         {
@@ -33,7 +33,7 @@ namespace Doloco.ViewModel
             set { SetProperty(ref _firstName, value, FirstNamePropertyName); }
         }
 
-        public const string LastNamePropertyName = "Lastname";
+        public const string LastNamePropertyName = "LastName";
         private string _lastName = string.Empty;
         public string LastName
         {
@@ -49,7 +49,7 @@ namespace Doloco.ViewModel
             set { SetProperty(ref _password, value, PasswordPropertyName); }
         }
 
-        public const string PasswordConfirmPropertyName = "Passwordconfirm";
+        public const string PasswordConfirmPropertyName = "PasswordConfirm";
         private string _passwordConfirm = string.Empty;
         public string PasswordConfirm
         {
@@ -77,16 +77,15 @@ namespace Doloco.ViewModel
 
             try
             {
-                var client = new DolocoApiClient.DolocoApiClient("http://dolocony.asuscomm.com:3000/api/v1");
+                var token = await App.ApiClient.RegisterUserAsync(_email, _firstName, _lastName, _password, _passwordConfirm);
+                App.Token = token;
 
-                var user = await client.RegisterUserAsync(_email, _firstName, _lastName, _password, _passwordConfirm);
-
-                Debug.WriteLine(user.Email);
+                await _navigation.PushAsync(new RootPage());
             }
             catch (Exception ex)
             {
                 var page = new ContentPage();
-                var result = page.DisplayAlert("Error", "Unable to load blog.", "OK", null);
+                var result = page.DisplayAlert("Error", ex.Message, "OK", "Cancel");
             }
 
             IsLoading = false;

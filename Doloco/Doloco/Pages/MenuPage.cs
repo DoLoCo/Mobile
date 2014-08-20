@@ -17,7 +17,7 @@ namespace Doloco.Pages
 
         public MenuPage()
         {
-            OptionItems.Add(new LoginOptionItem());
+            OptionItems.Add(new HomeOptionItem());
 
             BackgroundColor = Color.FromHex("333333");
 

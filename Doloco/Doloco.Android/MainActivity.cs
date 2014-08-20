@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Doloco.Pages;
+using Mindscape.Raygun4Net;
 using Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -18,6 +19,7 @@ namespace Doloco.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            RaygunClient.Attach("i27YVEgFvRzBI8gZoIeMkg==");
             base.OnCreate(bundle);
 
             App.Init(typeof(App).Assembly);
