@@ -15,25 +15,31 @@ using Xamarin.Forms.Platform.Android;
 namespace Doloco.Droid
 {
     [Activity(Label = "Doloco", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : AndroidActivity
+    public class MainActivity : AndroidActivity, ILoginManager
     {
-        protected override void OnCreate(Bundle bundle)
-        {
+            
+		protected override void OnCreate (Bundle bundle)
+		{
+			base.OnCreate (bundle);
             RaygunClient.Attach("i27YVEgFvRzBI8gZoIeMkg==");
-            base.OnCreate(bundle);
 
-            App.Init(typeof(App).Assembly);
-            Forms.Init(this, bundle);
-            FormsMaps.Init(this, bundle);
+			Forms.Init (this, bundle);
 
-            // Set our view from the "main" layout resource
-            SetPage(BuildView());
-        }
+			SetPage (App.GetLoginPage (this));
+		}
 
-        static Page BuildView()
+        #region ILoginManager implementation
+
+        public void ShowMainPage()
         {
-            return new NavigationPage(new LoginPage());
+            SetPage(App.GetMainPage());
         }
+
+        public void Logout()
+        {
+            SetPage(App.GetLoginPage(this));
+        }
+        #endregion
     }
 }
 

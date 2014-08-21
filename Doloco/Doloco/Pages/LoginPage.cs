@@ -10,13 +10,40 @@ namespace Doloco.Pages
 {
     public class LoginPage : ContentPage
     {
-        public LoginPage()
+        readonly Entry email;
+        readonly Entry password;
+
+        public LoginPage(ILoginManager ilm)
         {
-            BindingContext = new LoginViewModel(Navigation);
+            var button = new Button { Text = "Login" };
+            button.Clicked += async (sender, e) =>
+            {
+                if (String.IsNullOrEmpty(email.Text) || String.IsNullOrEmpty(password.Text))
+                {
+                    await DisplayAlert("Validation Error", "Username and Password are required", "Re-try");
+                }
+                else
+                {
+                    try
+                    {
 
-            var layout = new StackLayout();
+                        var token = await App.ApiClient.CreateSessionAsync(email.Text, password.Text);
 
-            var label = new Label
+                        App.Token = token;
+
+                        ilm.ShowMainPage();
+                    }
+                    catch (Exception ex)
+                    {
+                        var page = new ContentPage();
+                        var result = page.DisplayAlert("Error", ex.Message, "OK", "Cancel");
+                    }
+                }
+            };
+            var create = new Button { Text = "Create Account" };
+            create.Clicked += (sender, e) => MessagingCenter.Send<ContentPage>(this, "Create");
+
+            var logoLabel = new Label
             {
                 Text = "Doloco",
                 Font = Font.SystemFontOfSize(NamedSize.Large, FontAttributes.Bold),
@@ -26,26 +53,18 @@ namespace Doloco.Pages
                 YAlign = TextAlignment.Center, // Center the text in the blue box.
             };
 
-            layout.Children.Add(label);
-
-            var username = new Entry { Placeholder = "Username" };
-            username.SetBinding(Entry.TextProperty, LoginViewModel.UsernamePropertyName);
-            layout.Children.Add(username);
-
-            var password = new Entry { Placeholder = "Password", IsPassword = true};
-            password.SetBinding(Entry.TextProperty, LoginViewModel.PasswordPropertyName);
-            layout.Children.Add(password);
-
-            var signIn = new Button { Text = "Sign In", TextColor = Color.White };
-            signIn.SetBinding(Button.CommandProperty, LoginViewModel.LoginCommandPropertyName);
-
-            var register = new Button {Text = "Register", TextColor = Color.White};
-            register.SetBinding(Button.CommandProperty, LoginViewModel.RegisterCommandPropertyName);
-
-            layout.Children.Add(signIn);
-            layout.Children.Add(register);
-
-            Content = new ScrollView { Content = layout };
+            email = new Entry { Text = "", Placeholder = "Email"};
+            password = new Entry { Text = "", Placeholder = "Password", IsPassword = true};
+            Content = new StackLayout
+            {
+                Padding = new Thickness(10, 40, 10, 10),
+                Children = {
+					logoLabel, 
+					email,
+					password,
+					button, create
+				}
+            };
         }
     }
 }

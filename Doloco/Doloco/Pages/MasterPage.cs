@@ -21,13 +21,5 @@ namespace Doloco.Pages
             this.SetValue(Page.TitleProperty, menuItem.Title);
             this.SetValue(Page.IconProperty, menuItem.Icon);
         }
-
-        protected override void OnAppearing()
-        {
-            if (App.Token == null)
-                Navigation.PushAsync(new LoginPage());
-
-            base.OnAppearing();
-        }
     }
 }

@@ -12,31 +12,45 @@ namespace Doloco
 	public static class App
 	{
         static Assembly _reflectionAssembly;
-        internal static IDictionary<Type,Type> TypeMap;
-        internal static readonly MethodInfo GetDependency;
-        public static INavigation Navigation { get; private set; }
+	    static ILoginManager loginManager;
 	    public static readonly IDolocoApiClient ApiClient;
 	    public static string Token;
+        internal static IDictionary<Type, Type> TypeMap;
+        internal static readonly MethodInfo GetDependency;
 
         static App()
         {
             ApiClient = new DolocoApiClient.DolocoApiClient("http://dolocony.asuscomm.com:3000/api/v1");
             Token = null;
 
+            TypeMap = new Dictionary<Type, Type>();
+
             GetDependency = typeof(DependencyService)
                 .GetRuntimeMethods()
-                .Single((method)=>
+                .Single((method) =>
                     method.Name.Equals("Get"));
+        }
+
+	    public static Page GetLoginPage(ILoginManager ilm)
+	    {
+	        loginManager = ilm;
+
+            return new LoginModalPage(ilm);
+	    }
+
+        public static void Logout()
+        {
+            loginManager.Logout();
+        }
+
+        public static Page GetMainPage()
+        {
+            return new RootPage();
         }
 
         public static void Init(Assembly assembly)
         {
             System.Threading.Interlocked.CompareExchange(ref _reflectionAssembly, assembly, null);
-        }
-
-        public static Stream LoadResource(String name)
-        {
-            return _reflectionAssembly.GetManifestResourceStream(name);
         }
 	}
 }

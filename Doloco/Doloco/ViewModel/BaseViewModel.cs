@@ -22,9 +22,6 @@ namespace Doloco.ViewModel
                 .Single((method) =>
                     method.Name.Equals("Get"));
             GetDependency = getMethod.MakeGenericMethod(repoType);
-
-
-            //            DependencyService.Get<IRepository<T>>()
         }
 
         const string IconFormat = "{0}.png";
