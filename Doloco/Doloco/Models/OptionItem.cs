@@ -20,6 +20,44 @@ namespace Doloco.Models
         }
     }
 
+    public class CirclesOptionItem : OptionItem
+    {
+        public override string Title
+        {
+            get { return "Circles"; }
+        }
+
+        public override string Icon
+        {
+            get { return "Icon.png"; }
+        }
+    }
+
+	public class CampaignsOptionItem : OptionItem
+	{
+		public override string Title
+		{
+			get { return "Campaigns"; }
+		}
+
+		public override string Icon
+		{
+			get { return "Icon.png"; }
+		}
+	}
+
+	public class SettingsOptionItem : OptionItem {
+		public override string Title
+		{
+			get { return "Settings"; }
+		}
+
+		public override string Icon
+		{
+			get { return "Icon.png"; }
+		}
+	}
+
     public class OptionItem
     {
         public virtual string Title { get { var n = GetType().Name; return n.Substring(0, n.Length - 10); } }

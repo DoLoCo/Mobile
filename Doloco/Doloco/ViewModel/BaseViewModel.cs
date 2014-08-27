@@ -50,10 +50,10 @@ namespace Doloco.ViewModel
 
             using (var service = (IRepository<T>)GetDependency.Invoke(null, new object[] { DependencyFetchTarget.GlobalInstance }))
             {
-                var contacts = await service.All();
+                var items = await service.All();
 
-                foreach (var contact in contacts)
-                    Models.Add(contact);
+                foreach (var item in items)
+                    Models.Add(item);
             }
             OnPropertyChanged("Models");
         }

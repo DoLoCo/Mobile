@@ -4,7 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Doloco.Pages;
+using Doloco.Repositories;
 using DolocoApiClient;
+using DolocoApiClient.Models;
 using Xamarin.Forms;
 
 namespace Doloco
@@ -23,7 +25,11 @@ namespace Doloco
             ApiClient = new DolocoApiClient.DolocoApiClient("http://dolocony.asuscomm.com:3000/api/v1");
             Token = null;
 
-            TypeMap = new Dictionary<Type, Type>();
+			TypeMap = new Dictionary<Type, Type> 
+			{
+				{typeof(Campaign), typeof(CampaignRepository)},
+				{typeof(Organization), typeof(OrganizationRepository)}
+			};
 
             GetDependency = typeof(DependencyService)
                 .GetRuntimeMethods()

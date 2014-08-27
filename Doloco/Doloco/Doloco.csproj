@@ -45,13 +45,24 @@
     <Compile Include="Pages\ListPage.cs" />
     <Compile Include="Pages\LoginModalPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
-    <Compile Include="Pages\MasterPage.cs" />
     <Compile Include="Pages\MenuPage.cs" />
     <Compile Include="Pages\RootPage.cs" />
+    <Compile Include="Pages\SettingsPage.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="Views\DarkTextCell.cs" />
+    <Compile Include="ViewModel\SettingsViewModel.cs" />
+    <Compile Include="Pages\AccountsPage.cs" />
+    <Compile Include="Models\AccountType.cs" />
+    <Compile Include="ViewModel\AccountsViewModel.cs" />
+    <Compile Include="Pages\AddBankAccountPage.cs" />
+    <Compile Include="ViewModel\AddAccountViewModel.cs" />
+    <Compile Include="ViewModel\CirclesViewModel.cs" />
+    <Compile Include="ViewModel\CampaignsViewModel.cs" />
+    <Compile Include="Repositories\InMemoryRepository.cs" />
+    <Compile Include="Repositories\CampaignRepository.cs" />
+    <Compile Include="Repositories\OrganizationRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\DolocoApiClient\DolocoApiClient\DolocoApiClient.csproj">
@@ -82,5 +93,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\" />
   </ItemGroup>
 </Project>
