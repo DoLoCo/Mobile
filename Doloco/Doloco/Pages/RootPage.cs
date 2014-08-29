@@ -45,11 +45,8 @@ namespace Doloco.Pages
 			if (option.Title == "Home")
 				return new HomePage ();
 			else if (option.Title == "Circles") {
-				var viewModel = new CirclesViewModel ();
-				return new ListPage<Organization> (viewModel);
+				return new CirclesPage ();
 			} else if (option.Title == "Campaigns") {
-				var viewModel = new CampaignsViewModel ();
-				return new ListPage<Campaign> (viewModel);
 			}
 			else if (option.Title == "Settings")
 				return new SettingsPage ();

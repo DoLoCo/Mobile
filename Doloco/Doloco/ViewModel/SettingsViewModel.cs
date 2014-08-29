@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 using Xamarin.Forms;
+using DolocoApiClient.Models;
 
 namespace Doloco.ViewModel
 {
@@ -10,6 +13,8 @@ namespace Doloco.ViewModel
 		{
 			this._navigation = navigation;
 		}
+
+
 	}
 }
 

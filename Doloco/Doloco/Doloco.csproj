@@ -42,7 +42,6 @@
     <Compile Include="Models\OptionItem.cs" />
     <Compile Include="Pages\CreateAccountPage.cs" />
     <Compile Include="Pages\HomePage.cs" />
-    <Compile Include="Pages\ListPage.cs" />
     <Compile Include="Pages\LoginModalPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\MenuPage.cs" />
@@ -60,9 +59,7 @@
     <Compile Include="ViewModel\AddAccountViewModel.cs" />
     <Compile Include="ViewModel\CirclesViewModel.cs" />
     <Compile Include="ViewModel\CampaignsViewModel.cs" />
-    <Compile Include="Repositories\InMemoryRepository.cs" />
-    <Compile Include="Repositories\CampaignRepository.cs" />
-    <Compile Include="Repositories\OrganizationRepository.cs" />
+    <Compile Include="Pages\CirclesPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\DolocoApiClient\DolocoApiClient\DolocoApiClient.csproj">
@@ -93,8 +90,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\" />
   </ItemGroup>
 </Project>
