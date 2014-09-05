@@ -22,12 +22,12 @@ namespace Doloco
 			set { SetProperty(ref accountType, value, AccountTypePropertyName); }
 		}
 
-		public const string AccountPropertyName = "AccountName";
+		public const string AccountNamePropertyName = "AccountName";
 		private string accountName = string.Empty;
 		public string AccountName
 		{
 			get { return accountName; }
-			set { SetProperty(ref accountName, value, AccountPropertyName); }
+			set { SetProperty(ref accountName, value, AccountNamePropertyName); }
 		}
 
 		public const string AccountNumberPropertyName = "AccountNumber";

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Collections;
 using Xamarin.Forms;
@@ -13,18 +15,7 @@ namespace Doloco.ViewModel
 
 		public CirclesViewModel(INavigation navigation)
 		{
-			this._navigation = navigation;
-
-			try
-			{
-				var organizations = App.ApiClient.GetMyOrganizationsAsync();
-
-				this.Model = organizations.Result;
-			}
-			catch (Exception ex) {
-				var page = new ContentPage();
-				var result = page.DisplayAlert("Error", ex.Message, "OK", "Cancel");
-			}
+			_navigation = navigation;
 		}
 	}
 }

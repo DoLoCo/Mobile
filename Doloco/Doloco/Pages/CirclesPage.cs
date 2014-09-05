@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Collections;
+using DolocoApiClient.Models;
 using Xamarin.Forms;
 using Doloco.ViewModel;
 
@@ -8,17 +13,53 @@ namespace Doloco.Pages
 	{
 		public CirclesPage ()
 		{
-			var viewModel = new CirclesViewModel(Navigation);
-			BindingContext = viewModel;
-			var list = new ListView();
 
-			//Bind the items in our list to the observable collection of models
-			list.ItemsSource = viewModel.Model;
-
-			var stack = new StackLayout();
-			stack.Children.Add(list);
-			Content = stack;
 		}
+
+        protected override void OnAppearing()
+        {
+            LoadPage();
+        }
+
+        public async Task LoadPage()
+        {
+            var viewModel = new CirclesViewModel(Navigation);
+            BindingContext = viewModel;
+
+            var stack = new StackLayout();
+
+            try
+            {
+                 viewModel.Model = await App.ApiClient.GetMyOrganizationsAsync();
+            }
+            catch (Exception ex)
+            {
+                var page = new ContentPage();
+                page.DisplayAlert("Error", ex.Message, "OK", "Cancel");
+            }
+
+            var createButton = new Button
+            {
+                Text = "Create Circle"
+            };
+
+            createButton.Clicked += async (sender, e) =>
+            {
+                var createCirclePage = new CreateCirclePage();
+                await Navigation.PushAsync(createCirclePage);
+            };
+
+            stack.Children.Add(createButton);
+
+            var cell = new DataTemplate(typeof(TextCell));
+            cell.SetBinding(TextCell.TextProperty, "Name");
+            cell.SetBinding(TextCell.DetailProperty, "Description");
+
+            var list = new ListView {ItemsSource = viewModel.Model, ItemTemplate = cell};
+            stack.Children.Add(list);
+
+            Content = stack;
+        }
 	}
 }
 

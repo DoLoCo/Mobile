@@ -12,13 +12,15 @@ namespace Doloco
 			BindingContext = new AddAccountViewModel(Navigation);
 			var layout = new StackLayout();
 
-			var accountType = new Entry { Placeholder = "Account Type" };
-			accountType.SetBinding(Entry.TextProperty, AddAccountViewModel.AccountTypePropertyName);
+		    var accountType = new Picker() {Title = "Account Type"};
+            accountType.Items.Add("Checking");
+            accountType.Items.Add("Savings");
+			accountType.SetBinding(Picker.SelectedIndexProperty, AddAccountViewModel.AccountTypePropertyName);
 			layout.Children.Add(accountType);
 
 			var accountName = new Entry { Placeholder = "Account Name" };
-			accountName.SetBinding(Entry.TextProperty, AddAccountViewModel.AccountPropertyName);
-			layout.Children.Add(accountType);
+			accountName.SetBinding(Entry.TextProperty, AddAccountViewModel.AccountNamePropertyName);
+			layout.Children.Add(accountName);
 
 			var accountNumber = new Entry { Placeholder = "Account Number" };
 			accountNumber.SetBinding(Entry.TextProperty, AddAccountViewModel.AccountNumberPropertyName);
