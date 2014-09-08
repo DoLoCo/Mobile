@@ -10,7 +10,19 @@ namespace Doloco.Pages
 {
     public class CampaignsPage:ContentPage
     {
-        public CampaignsPage()
+        private int _orgId;
+
+        public CampaignsPage(int? orgId = null)
+        {
+            
+        }
+
+        protected override void OnAppearing()
+        {
+            LoadPage();
+        }
+
+        public async Task LoadPage()
         {
             var viewModel = new CampaignsViewModel(Navigation);
             BindingContext = viewModel;
