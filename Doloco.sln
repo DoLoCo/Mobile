@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doloco", "Doloco\Doloco\Dol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doloco.Android", "Doloco\Doloco.Android\Doloco.Android.csproj", "{4E59FA47-FEB4-4F46-B9B0-E2127B9CC33F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DolocoApiClient", "..\DolocoApiClient\DolocoApiClient\DolocoApiClient.csproj", "{4D12CD75-A48D-4317-92CF-CC2B630AB8B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DolocoApiClient", "DolocoApiClient\DolocoApiClient\DolocoApiClient.csproj", "{4D12CD75-A48D-4317-92CF-CC2B630AB8B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

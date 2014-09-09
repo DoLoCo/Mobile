@@ -65,12 +65,6 @@
     <Compile Include="ViewModel\CirclesViewModel.cs" />
     <Compile Include="Pages\CirclesPage.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\DolocoApiClient\DolocoApiClient\DolocoApiClient.csproj">
-      <Project>{4D12CD75-A48D-4317-92CF-CC2B630AB8B5}</Project>
-      <Name>DolocoApiClient</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -94,5 +88,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DolocoApiClient\DolocoApiClient\DolocoApiClient.csproj">
+      <Project>{4d12cd75-a48d-4317-92cf-cc2b630ab8b5}</Project>
+      <Name>DolocoApiClient</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
