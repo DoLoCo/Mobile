@@ -54,6 +54,11 @@ namespace Doloco.Pages
             {
                 Text = "Add Campaign"
             };
+            button.Clicked += async (sender, e) =>
+            {
+                var createCampaignPage = new CreateCampaignPage(_circleId);
+                await Navigation.PushAsync(createCampaignPage);
+            };
             stack.Children.Add(button);
 
             var cell = new DataTemplate(typeof(TextCell));

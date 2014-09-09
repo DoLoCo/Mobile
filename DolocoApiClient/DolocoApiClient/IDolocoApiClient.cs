@@ -18,6 +18,9 @@ namespace DolocoApiClient
 	    Task<BankAccount> CreateBankAccountAsync(string accountNumber, string accountType, string routingNumber,
 	        string accountName);
         Task<IEnumerable<Campaign>> GetOrganizationCampaignAsync(int organizationId);
+
+	    Task<Campaign> CreateOrganizationCampaignAsync(int organizationId, string campaignName,
+	        string campaignDescription);
 	}
 }
 

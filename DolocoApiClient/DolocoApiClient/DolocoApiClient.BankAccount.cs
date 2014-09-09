@@ -38,11 +38,16 @@ namespace DolocoApiClient
             {
                 {"account_number", accountNumber},
                 {"account_type", accountType},
-                {"account_name", accountName},
+                {"bank_account_name", accountName},
                 {"routing_number", routingNumber}
             };
 
-            return _client.PostAsync<BankAccount>(bankAccountUrl, bankAccountPayload).Process();
+            var bankAccount = new Dictionary<string, Dictionary<string, string>>
+            {
+                {"bank_account", bankAccountPayload}
+            };
+
+            return _client.PostAsync<BankAccount>(bankAccountUrl, bankAccount).Process();
         }
 
         public Task<BankAccount> DeleteBankAccountAsync(int bankAccountId)

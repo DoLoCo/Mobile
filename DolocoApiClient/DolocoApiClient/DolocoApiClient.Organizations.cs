@@ -109,9 +109,10 @@ namespace DolocoApiClient
 
         public Task<IEnumerable<Campaign>> GetOrganizationCampaignAsync(int organizationId)
         {
-            var campaignsUrl = GetRoutePathUrl(DolocoApiRouteEnum.OrganizationCampaigns);
+            var campaignsUrl = GetRoutePathUrl(DolocoApiRouteEnum.Campaigns);
+            var organizationCampaignsUrl = String.Format("{0}?organization_id={1}", campaignsUrl, organizationId);
 
-            return _client.GetAsync<CampaignsPayload>(String.Format(campaignsUrl, organizationId)).Process(payload =>
+            return _client.GetAsync<CampaignsPayload>(organizationCampaignsUrl).Process(payload =>
             {
                 var campaigns = new List<Campaign>();
 
@@ -119,6 +120,31 @@ namespace DolocoApiClient
                     campaigns = payload.Campaigns.ToList();
 
                 return campaigns.AsEnumerable();
+            });
+        }
+
+        public Task<Campaign> CreateOrganizationCampaignAsync(int organizationId, string campaignName,
+            string campaignDescription)
+        {
+            var createCampaignUrl = String.Format(GetRoutePathUrl(DolocoApiRouteEnum.OrganizationCampaigns),
+                organizationId);
+
+            var campaign = new Dictionary<string, string>
+            {
+                {"campaign_name", campaignName},
+                {"campaign_description", campaignDescription}
+            };
+
+            var campaignPayload = new Dictionary<string, Dictionary<string, string>>
+            {
+                {"campaign", campaign}
+            };
+
+            return _client.PostAsync<Campaign>(createCampaignUrl, campaignPayload).Process(payload =>
+            {
+                var newCampaign = (Campaign) payload;
+
+                return newCampaign;
             });
         }
     }
