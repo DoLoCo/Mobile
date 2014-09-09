@@ -7,7 +7,7 @@ namespace Doloco
 {
 	public class AddBankAccountPage:ContentPage
 	{
-		public AddBankAccountPage (AccountType accountTypeEnum)
+		public AddBankAccountPage ()
 		{
 			BindingContext = new AddAccountViewModel(Navigation);
 			var layout = new StackLayout();

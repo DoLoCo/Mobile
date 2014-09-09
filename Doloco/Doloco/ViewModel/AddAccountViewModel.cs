@@ -11,7 +11,7 @@ namespace Doloco
 	public class AddAccountViewModel:BaseViewModel
 	{
 		private readonly INavigation _navigation;
-	    private IDictionary<string, string> _accountTypes;
+	    private readonly IDictionary<string, string> _accountTypes;
 
 		public AddAccountViewModel(INavigation navigation)
 		{

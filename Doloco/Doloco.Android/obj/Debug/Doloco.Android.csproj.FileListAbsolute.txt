@@ -1,4 +1,3 @@
-C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\obj\Debug\android\bin\Mobile.Android.apk
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Mobile.Android.dll
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Mobile.Android.pdb
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Mobile.Android.dll.mdb
@@ -30,6 +29,7 @@ C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\bin\Debug\Newton
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\obj\Debug\Doloco.Android.csprojResolveAssemblyReference.cache
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\obj\Debug\Mobile.Android.dll
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\obj\Debug\Mobile.Android.pdb
+C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\obj\Debug\android\bin\Mobile.Android.apk
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\obj\Debug\res\drawable\icon.png
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\obj\Debug\R.cs.flag
 C:\Users\billpull\Documents\GitHub\Mobile\Doloco\Doloco.Android\obj\Debug\uploadflags.txt

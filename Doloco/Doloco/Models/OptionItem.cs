@@ -33,19 +33,6 @@ namespace Doloco.Models
         }
     }
 
-	public class CampaignsOptionItem : OptionItem
-	{
-		public override string Title
-		{
-			get { return "Campaigns"; }
-		}
-
-		public override string Icon
-		{
-			get { return "Icon.png"; }
-		}
-	}
-
 	public class SettingsOptionItem : OptionItem {
 		public override string Title
 		{

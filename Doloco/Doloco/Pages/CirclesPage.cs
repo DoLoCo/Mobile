@@ -56,6 +56,13 @@ namespace Doloco.Pages
             cell.SetBinding(TextCell.DetailProperty, "Description");
 
             var list = new ListView {ItemsSource = viewModel.Model, ItemTemplate = cell};
+            list.ItemSelected += async (sender, e) =>
+            {
+                var selectedCircle = (Organization)e.SelectedItem;
+                var circlePage = new CirclePage(selectedCircle.Id);
+
+                await Navigation.PushAsync(circlePage);
+            };
             stack.Children.Add(list);
 
             Content = stack;

@@ -40,7 +40,8 @@
     <Compile Include="ILoginManager.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Models\OptionItem.cs" />
-    <Compile Include="Pages\CampaignsPage.cs" />
+    <Compile Include="Pages\CampaignPage.cs" />
+    <Compile Include="Pages\CirclePage.cs" />
     <Compile Include="Pages\CreateAccountPage.cs" />
     <Compile Include="Pages\CreateCirclePage.cs" />
     <Compile Include="Pages\HomePage.cs" />
@@ -51,17 +52,17 @@
     <Compile Include="Pages\SettingsPage.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\CampaignViewModel.cs" />
+    <Compile Include="ViewModel\CircleViewModel.cs" />
     <Compile Include="ViewModel\CreateCircleViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="Views\DarkTextCell.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="Pages\AccountsPage.cs" />
-    <Compile Include="Models\AccountType.cs" />
     <Compile Include="ViewModel\AccountsViewModel.cs" />
     <Compile Include="Pages\AddBankAccountPage.cs" />
     <Compile Include="ViewModel\AddAccountViewModel.cs" />
     <Compile Include="ViewModel\CirclesViewModel.cs" />
-    <Compile Include="ViewModel\CampaignsViewModel.cs" />
     <Compile Include="Pages\CirclesPage.cs" />
   </ItemGroup>
   <ItemGroup>

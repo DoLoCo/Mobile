@@ -17,14 +17,13 @@ namespace Doloco.Pages
 			var layout = new StackLayout();
 
 			var header = new Label {
-				Text = "Bank Settings"
+				Text = "Account Settings"
 			};
 
 			layout.Children.Add (header);
 
 			var paymentOptions = new string [] {
-				"Receiving Accounts",
-				"Payment Accounts"
+				"Bank Accounts"
 			};
 
 			var optionsListView = new ListView {
@@ -32,13 +31,7 @@ namespace Doloco.Pages
 				RowHeight = 40
 			};
 
-			optionsListView.ItemSelected += (sender, e) => {
-				if (e.SelectedItem.ToString() == "Receiving Accounts"){
-					Navigation.PushAsync(new AccountsPage(AccountType.ReceivingAccount));
-				} else {
-					Navigation.PushAsync(new AccountsPage(AccountType.PaymentAccount));
-				}
-			};
+			optionsListView.ItemSelected += (sender, e) => Navigation.PushAsync(new AccountsPage());
 
 			layout.Children.Add (optionsListView);
 

@@ -7,24 +7,16 @@ namespace Doloco
 {
 	public class AccountsPage: ContentPage
 	{
-		public AccountsPage (AccountType accountType)
+		public AccountsPage ()
 		{
 			BindingContext = new AccountsViewModel(Navigation);
 			var layout = new StackLayout();
-
-			var lblText = accountType.Equals (AccountType.PaymentAccount) ? "Payment Accounts" : "Receiving Accounts";
-
-			var label = new Label {
-				Text = lblText
-			};
-
-			layout.Children.Add(label);
 
 			var addButton = new Button {
 				Text = "Add Account"
 			};
 			addButton.Clicked += async (sender, e) => {
-				await Navigation.PushAsync(new AddBankAccountPage(accountType));
+				await Navigation.PushAsync(new AddBankAccountPage());
 			};
 
 			layout.Children.Add (addButton);

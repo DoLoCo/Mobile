@@ -19,7 +19,6 @@ namespace Doloco.Pages
         {
             OptionItems.Add(new HomeOptionItem());
             OptionItems.Add(new CirclesOptionItem());
-			OptionItems.Add(new CampaignsOptionItem());
 			OptionItems.Add (new SettingsOptionItem ());
 
             BackgroundColor = Color.FromHex("333333");
