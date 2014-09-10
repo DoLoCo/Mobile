@@ -107,6 +107,29 @@ namespace DolocoApiClient
             return _client.GetAsync<BankAccount>(bankAccountUrl).Process();
         }
 
+        public Task<BankAccount> CreateOrganizationBankAccountAsync(int organizationId, string accountNumber,
+            string accountType, string routingNumber,
+            string accountName)
+        {
+            var bankAccountUrl = String.Format(GetRoutePathUrl(DolocoApiRouteEnum.OrganizationBankAccounts),
+                organizationId);
+
+            var bankAccount = new Dictionary<string, string>
+            {
+                {"account_number", accountNumber},
+                {"account_type", accountType},
+                {"bank_account_name", accountName},
+                {"routing_number", routingNumber}
+            };
+
+            var bankAccountPayload = new Dictionary<string, Dictionary<string, string>>
+            {
+                {"bank_account", bankAccount}
+            };
+
+            return _client.PostAsync<BankAccount>(bankAccountUrl, bankAccountPayload).Process();
+        }
+
         public Task<IEnumerable<Campaign>> GetOrganizationCampaignAsync(int organizationId)
         {
             var campaignsUrl = GetRoutePathUrl(DolocoApiRouteEnum.Campaigns);
@@ -131,8 +154,8 @@ namespace DolocoApiClient
 
             var campaign = new Dictionary<string, string>
             {
-                {"campaign_name", campaignName},
-                {"campaign_description", campaignDescription}
+                {"title", campaignName},
+                {"description", campaignDescription}
             };
 
             var campaignPayload = new Dictionary<string, Dictionary<string, string>>
@@ -146,6 +169,42 @@ namespace DolocoApiClient
 
                 return newCampaign;
             });
+        }
+
+        public Task<IEnumerable<Donation>> GetOrganizationCampaignDonationsAsync(int organizationId, int campaignId)
+        {
+            var donationUrl = String.Format(GetRoutePathUrl(DolocoApiRouteEnum.OrganizationCampaignDonations),
+                organizationId, campaignId);
+
+            return _client.GetAsync<DonationsPayload>(donationUrl).Process(payload =>
+            {
+                var donations = new List<Donation>();
+
+                if (payload.Donations != null)
+                    donations = payload.Donations.ToList();
+
+                return donations.AsEnumerable();
+            });
+        }
+
+        public Task<Donation> CreateOrganizationCampaignDonationAsync(int organizationId, int campaignId, int amount,
+            int bankAccountId)
+        {
+            var donationUrl = String.Format(GetRoutePathUrl(DolocoApiRouteEnum.OrganizationCampaignDonations),
+                organizationId, campaignId);
+
+            var donation = new Dictionary<string, int>
+            {
+                {"amount", amount},
+                {"bank_account_id", bankAccountId}
+            };
+
+            var donationPayload = new Dictionary<string, Dictionary<string, int>>
+            {
+                {"donation", donation}
+            };
+
+            return _client.PostAsync<Donation>(donationUrl, donationPayload).Process();
         }
     }
 }

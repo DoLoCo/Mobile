@@ -17,7 +17,10 @@ namespace DolocoApiClient
 
             return _client.GetAsync<BankAccountsPayload>(bankAccountUrl).Process(payload =>
             {
-                var bankAccounts = payload.BankAccounts.ToList();
+                var bankAccounts = new List<BankAccount>();
+
+                if (payload.BankAccounts != null)
+                    bankAccounts = payload.BankAccounts.ToList();
 
                 return bankAccounts.AsEnumerable();
             });

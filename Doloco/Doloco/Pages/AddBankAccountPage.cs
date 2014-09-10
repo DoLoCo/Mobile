@@ -30,7 +30,7 @@ namespace Doloco
 			routingNumber.SetBinding(Entry.TextProperty, AddAccountViewModel.RoutingNumberPropertyName);
 			layout.Children.Add(routingNumber);
 
-			var button = new Button { Text = "Add Account", TextColor = Color.White };
+            var button = new Button { Text = "Add Account", BackgroundColor = Helpers.Color.Blue.ToFormsColor() };
 			button.SetBinding(Button.CommandProperty, AddAccountViewModel.AddCommandPropertyName);
 			layout.Children.Add (button);
 

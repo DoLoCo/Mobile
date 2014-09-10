@@ -50,7 +50,7 @@
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Payloads\ApiErrorPayload.cs" />
     <Compile Include="Payloads\BankAccountsPayload.cs" />
-    <Compile Include="Payloads\CampaignPayload.cs" />
+    <Compile Include="Payloads\DonationsPayload.cs" />
     <Compile Include="Payloads\OrganizationsPayload.cs" />
     <Compile Include="Payloads\CampaignsPayload.cs" />
     <Compile Include="Payloads\SessionPayload.cs" />

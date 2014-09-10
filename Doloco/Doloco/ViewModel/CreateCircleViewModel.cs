@@ -89,12 +89,14 @@ namespace Doloco.ViewModel
         {
             try
             {
-                await
+                var circle = await
                     App.ApiClient.CreateOrganizationAsync(_organizationName, _phoneNumber, _description, _address, _city,
                         _state,
                         _postalCode);
 
-                await _navigation.PopAsync();
+                var circleBankAccountPage = new CreateCircleBankAccountPage(circle.Id);
+
+                await _navigation.PushAsync(circleBankAccountPage);
             }
             catch (Exception ex)
             {

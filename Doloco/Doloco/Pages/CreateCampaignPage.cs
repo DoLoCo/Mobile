@@ -59,7 +59,7 @@ namespace Doloco.Pages
             campaignTargetDate.SetBinding(DatePicker.DateProperty, CreateCampaignViewModel.CampaignTargetDatePropertyName);
             layout.Children.Add(campaignTargetDate);
 
-            var button = new Button { Text = "Create Campaign", TextColor = Color.White };
+            var button = new Button { Text = "Create Campaign", BackgroundColor = Helpers.Color.Blue.ToFormsColor() };
             button.SetBinding(Button.CommandProperty, CreateCircleViewModel.AddCommandPropertyName);
             layout.Children.Add(button);
 

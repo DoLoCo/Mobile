@@ -39,10 +39,10 @@ namespace DolocoApiClient
                 {DolocoApiRouteEnum.OrganizationBankAccounts, "/organizations/{0}/bank_accounts"},
                 {DolocoApiRouteEnum.OrganizationBankAccount, "/organizations/{0}/bank_accounts/{1}"},
                 {DolocoApiRouteEnum.OrganizationCampaigns, "/organizations/{0}/campaigns"},
-                {DolocoApiRouteEnum.OrganizationCampaign, "/organizaitons/{0}/campaigns/{1}"},
-                {DolocoApiRouteEnum.OrganizationCampaignDonations, "/organizaitons/{0}/campaigns/{1}/donations"},
+                {DolocoApiRouteEnum.OrganizationCampaign, "/organizations/{0}/campaigns/{1}"},
+                {DolocoApiRouteEnum.OrganizationCampaignDonations, "/organizations/{0}/campaigns/{1}/donations"},
                 {DolocoApiRouteEnum.Campaigns, "/campaigns"},
-                {DolocoApiRouteEnum.Campaign, "/campaign/{0}"}
+                {DolocoApiRouteEnum.Campaign, "/campaigns/{0}"}
             };
         }
 

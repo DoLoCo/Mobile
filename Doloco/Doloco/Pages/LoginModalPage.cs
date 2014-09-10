@@ -18,6 +18,8 @@ namespace Doloco.Pages
             this.Children.Add(login);
             this.Children.Add(create);
 
+            BackgroundColor = Helpers.Color.Orange.ToFormsColor();
+
             MessagingCenter.Subscribe<ContentPage>(this, "Login", (sender) => {
                                                                                   this.SelectedItem = login;
             });

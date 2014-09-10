@@ -15,7 +15,7 @@ namespace Doloco.Pages
 
         public LoginPage(ILoginManager ilm)
         {
-            var button = new Button { Text = "Login" };
+            var button = new Button { Text = "Login", BackgroundColor = Helpers.Color.Blue.ToFormsColor() };
             button.Clicked += async (sender, e) =>
             {
                 if (String.IsNullOrEmpty(email.Text) || String.IsNullOrEmpty(password.Text))
@@ -40,7 +40,7 @@ namespace Doloco.Pages
                     }
                 }
             };
-            var create = new Button { Text = "Create Account" };
+            var create = new Button { Text = "Create Account", BackgroundColor = Helpers.Color.Blue.ToFormsColor() };
             create.Clicked += (sender, e) => MessagingCenter.Send<ContentPage>(this, "Create");
 
             var logoLabel = new Label

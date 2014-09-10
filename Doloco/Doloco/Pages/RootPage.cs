@@ -34,8 +34,10 @@ namespace Doloco.Pages
             previousItem = option;
 
             var displayPage = PageForOption(option);
-
-            Detail = new NavigationPage(displayPage);
+            Detail = new NavigationPage(displayPage)
+            {
+                BarBackgroundColor = Helpers.Color.Orange.ToFormsColor()
+            };
 
             IsPresented = false;
         }

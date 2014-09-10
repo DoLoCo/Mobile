@@ -30,12 +30,7 @@ namespace DolocoApiClient
         {
             var campaignUrl = GetRoutePathUrl(DolocoApiRouteEnum.Campaign);
 
-            return _client.GetAsync<CampaignPayload>(String.Format(campaignUrl, campaignId)).Process(payload =>
-            {
-                var campaign = payload.Campaign;
-
-                return campaign;
-            });
+            return _client.GetAsync<Campaign>(String.Format(campaignUrl, campaignId)).Process();
         }
     }
 }

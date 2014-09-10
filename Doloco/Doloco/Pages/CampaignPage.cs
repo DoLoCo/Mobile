@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Doloco.ViewModel;
+using DolocoApiClient.Models;
 using Xamarin.Forms;
 
 namespace Doloco.Pages
 {
     public class CampaignPage:ContentPage
     {
-        public CampaignPage(int campaignId)
+        private readonly int _campaignId;
+        private readonly int _organizationId;
+
+        public CampaignPage(int campaignId, int organizationId)
         {
-            
+            _campaignId = campaignId;
+            _organizationId = organizationId;
         }
 
         protected override void OnAppearing()
@@ -21,7 +29,71 @@ namespace Doloco.Pages
 
         public async Task LoadPage()
         {
-            
+            var viewModel = new CampaignViewModel(Navigation);
+            BindingContext = viewModel;
+
+            var stack = new StackLayout();
+
+            try
+            {
+                viewModel.Model = await App.ApiClient.GetCampaignAsync(_campaignId);
+                viewModel.DonationModel = await App.ApiClient.GetOrganizationCampaignDonationsAsync(_organizationId, _campaignId);
+            }
+            catch (Exception ex)
+            {
+                var page = new ContentPage();
+                page.DisplayAlert("Error", ex.Message, "OK", "Cancel");
+            }
+
+            var headerLabel = new Label
+            {
+                Text = viewModel.Model.Title
+            };
+            stack.Children.Add(headerLabel);
+
+            var descLabel = new Label
+            {
+                Text = viewModel.Model.Description
+            };
+            stack.Children.Add(descLabel);
+
+            var button = new Button
+            {
+                Text = "Donate Now!",
+                BackgroundColor = Helpers.Color.Blue.ToFormsColor()
+            };
+            button.Clicked += async (sender, e) =>
+            {
+                try
+                {
+                    var bankAccounts = await App.ApiClient.GetBankAccountsAsync();
+                    var enumerable = bankAccounts as IList<BankAccount> ?? bankAccounts.ToList();
+                    if (!enumerable.Any())
+                    {
+                        var page = new ContentPage();
+                        page.DisplayAlert("Error", "Must Link a Bank Account First", "OK", "Cancel");
+                    }
+                    else
+                    {
+                        var donateModal = new DonateModalPage(_organizationId, _organizationId, enumerable);
+                        await Navigation.PushModalAsync(donateModal);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var page = new ContentPage();
+                    page.DisplayAlert("Error", ex.Message, "OK", "Cancel");
+                }
+            };
+            stack.Children.Add(button);
+
+            var cell = new DataTemplate(typeof(TextCell));
+            cell.SetBinding(TextCell.TextProperty, "Amount");
+
+            var list = new ListView { ItemsSource = viewModel.DonationModel, ItemTemplate = cell };
+            stack.Children.Add(list);
+
+            Content = stack;
         }
     }
 }
