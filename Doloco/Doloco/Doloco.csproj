@@ -62,6 +62,7 @@
     <Compile Include="ViewModel\CreateCircleViewModel.cs" />
     <Compile Include="ViewModel\DonateModalViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="Views\ListTextCell.cs" />
     <Compile Include="Views\DarkTextCell.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="Pages\AccountsPage.cs" />
@@ -70,6 +71,8 @@
     <Compile Include="ViewModel\AddAccountViewModel.cs" />
     <Compile Include="ViewModel\CirclesViewModel.cs" />
     <Compile Include="Pages\CirclesPage.cs" />
+    <Compile Include="Views\StripedListView.cs" />
+    <Compile Include="Views\StripedViewCell.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

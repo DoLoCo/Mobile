@@ -47,7 +47,6 @@ namespace Doloco.Pages
             {
                 Text = "Doloco",
                 Font = Font.SystemFontOfSize(NamedSize.Large, FontAttributes.Bold),
-                TextColor = Color.White,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 XAlign = TextAlignment.Center, // Center the text in the blue box.
                 YAlign = TextAlignment.Center, // Center the text in the blue box.

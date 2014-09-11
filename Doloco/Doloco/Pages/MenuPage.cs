@@ -21,7 +21,7 @@ namespace Doloco.Pages
             OptionItems.Add(new CirclesOptionItem());
 			OptionItems.Add (new SettingsOptionItem ());
 
-            BackgroundColor = Color.FromHex("e0e4cc");
+            BackgroundColor = Color.FromHex("333333");
 
             var layout = new StackLayout { Spacing = 0, VerticalOptions = LayoutOptions.FillAndExpand };
 
@@ -51,7 +51,7 @@ namespace Doloco.Pages
 
             var cell = new DataTemplate(typeof(DarkTextCell));
             cell.SetBinding(TextCell.TextProperty, "Title");
-            cell.SetBinding(TextCell.DetailProperty, "Count");
+            cell.SetBinding(ImageCell.ImageSourceProperty, "IconSource");
             cell.SetValue(VisualElement.BackgroundColorProperty, Color.Transparent);
 
             Menu.ItemTemplate = cell;

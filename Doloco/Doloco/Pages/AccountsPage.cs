@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Doloco.Views;
 using Xamarin.Forms;
 using Doloco.ViewModel;
 using Doloco.Models;
@@ -48,7 +49,7 @@ namespace Doloco
                 page.DisplayAlert("Error", ex.Message, "OK", "Cancel");
 	        }
 
-            var cell = new DataTemplate(typeof(TextCell));
+            var cell = new DataTemplate(typeof(ListTextCell));
             cell.SetBinding(TextCell.TextProperty, "BankAccountName");
             cell.SetBinding(TextCell.DetailProperty, "LastFour");
 

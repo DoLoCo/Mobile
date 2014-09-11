@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Doloco.ViewModel;
+using Doloco.Views;
 using DolocoApiClient.Models;
 using Xamarin.Forms;
 
@@ -86,7 +87,7 @@ namespace Doloco.Pages
             };
             stack.Children.Add(button);
 
-            var cell = new DataTemplate(typeof(TextCell));
+            var cell = new DataTemplate(typeof(ListTextCell));
             cell.SetBinding(TextCell.TextProperty, "Amount");
 
             var list = new ListView { ItemsSource = viewModel.DonationModel, ItemTemplate = cell };

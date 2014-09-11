@@ -1039,6 +1039,9 @@ namespace Doloco.Droid
 			// aapt resource value: 0x7f020084
 			public const int mr_ic_media_route_on_holo_light = 2130837636;
 			
+			// aapt resource value: 0x7f020085
+			public const int settings = 2130837637;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

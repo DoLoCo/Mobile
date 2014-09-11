@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections;
+using Doloco.Views;
 using DolocoApiClient.Models;
 using Xamarin.Forms;
 using Doloco.ViewModel;
@@ -51,7 +52,7 @@ namespace Doloco.Pages
 
             stack.Children.Add(createButton);
 
-            var cell = new DataTemplate(typeof(TextCell));
+            var cell = new DataTemplate(typeof(ListTextCell));
             cell.SetBinding(TextCell.TextProperty, "Name");
             cell.SetBinding(TextCell.DetailProperty, "Description");
 
