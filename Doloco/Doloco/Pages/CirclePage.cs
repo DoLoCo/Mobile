@@ -53,8 +53,7 @@ namespace Doloco.Pages
 
             var button = new Button
             {
-                Text = "Add Campaign",
-                BackgroundColor = Helpers.Color.Blue.ToFormsColor()
+                Text = "Add Campaign"
             };
             button.Clicked += async (sender, e) =>
             {

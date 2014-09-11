@@ -31,7 +31,7 @@ namespace DolocoApiClient
 	    Task<Campaign> GetCampaignAsync(int campaignId);
 	    Task<IEnumerable<Donation>> GetOrganizationCampaignDonationsAsync(int organizationId, int campaignId);
 
-	    Task<Donation> CreateOrganizationCampaignDonationAsync(int organizationId, int campaignId, double amount,
+	    Task<Donation> CreateOrganizationCampaignDonationAsync(int organizationId, int campaignId, string amount,
 	        int bankAccountId);
 	}
 }

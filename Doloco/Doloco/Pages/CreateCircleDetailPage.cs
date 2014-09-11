@@ -45,7 +45,7 @@ namespace Doloco.Pages
             postalCode.SetBinding(Entry.TextProperty, CreateCircleViewModel.PostalCodePropertyName);
             layout.Children.Add(postalCode);
 
-            var button = new Button { Text = "Next", BackgroundColor = Helpers.Color.Blue.ToFormsColor() };
+            var button = new Button { Text = "Next" };
             button.SetBinding(Button.CommandProperty, CreateCircleViewModel.AddCommandPropertyName);
             layout.Children.Add(button);
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,20 +40,22 @@ namespace Doloco.Pages
 
             _amountLabel = new Label
             {
-                Text = String.Format("Donate: ${0}", _minAmount)
+                Text = String.Format("Donate: {0}", _minAmount.ToString("C", CultureInfo.CurrentCulture))
             };
             layout.Children.Add(_amountLabel);
 
             var amount = new Stepper
             {
                 Maximum = 5000,
-                Minimum = _minAmount
+                Minimum = _minAmount,
+                Increment = 0.5
             };
 
             amount.SetBinding(Stepper.ValueProperty, DonateModalViewModel.AmountPropertyName );
+            amount.Value = _minAmount;
             amount.ValueChanged += async (sender, e) =>
             {
-                _amountLabel.Text = String.Format("Donate: ${0}", e.NewValue);
+                _amountLabel.Text = String.Format("Donate: {0}", e.NewValue.ToString("C", CultureInfo.CurrentCulture));
             };
             layout.Children.Add(amount);
 
@@ -69,8 +72,7 @@ namespace Doloco.Pages
 
             var button = new Button
             {
-                Text = "Donate",
-                BackgroundColor = Helpers.Color.Blue.ToFormsColor()
+                Text = "Donate"
             };
             button.SetBinding(Button.CommandProperty, DonateModalViewModel.DonateCommandPropertyName);
             layout.Children.Add(button);

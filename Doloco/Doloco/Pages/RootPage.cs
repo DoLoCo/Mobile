@@ -34,10 +34,7 @@ namespace Doloco.Pages
             _previousItem = option;
 
             var displayPage = PageForOption(option);
-            Detail = new NavigationPage(displayPage)
-            {
-                BarBackgroundColor = Helpers.Color.Orange.ToFormsColor()
-            };
+            Detail = new NavigationPage(displayPage);
 
             Detail.SetValue(TitleProperty, option.Title);
             Detail.SetValue(IconProperty, option.Icon);

@@ -54,5 +54,14 @@ namespace DolocoApiClient
 
 	        return routePath;
 	    }
+
+	    private string ConvertToCents(string amount)
+	    {
+	        var doubleAmount = Convert.ToDecimal(amount);
+	        doubleAmount *= 100;
+	        var intAmount = (int) doubleAmount;
+
+	        return intAmount.ToString();
+	    }
     }
 }

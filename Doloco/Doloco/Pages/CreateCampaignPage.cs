@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,19 +31,21 @@ namespace Doloco.Pages
 
             _campaignTargetLabel = new Label
             {
-                Text = String.Format("Target Amount ${0}", _minCampaignTarget)
+                Text = String.Format("Target Amount {0}", _minCampaignTarget.ToString("C", CultureInfo.CurrentCulture))
             };
             layout.Children.Add(_campaignTargetLabel);
 
             var campaignTarget = new Stepper
             {
                 Maximum = 5000,
-                Minimum = _minCampaignTarget
+                Minimum = _minCampaignTarget,
+                Increment = 0.5
             };
             campaignTarget.SetBinding(Stepper.ValueProperty, CreateCampaignViewModel.CampaignTargetPropertyName);
+            campaignTarget.Value = _minCampaignTarget;
             campaignTarget.ValueChanged += async (sender, e) =>
             {
-                _campaignTargetLabel.Text = String.Format("Target Amount ${0}", e.NewValue);
+                _campaignTargetLabel.Text = String.Format("Target Amount {0}", e.NewValue.ToString("C", CultureInfo.CurrentCulture));
             };
             layout.Children.Add(campaignTarget);
 
@@ -59,7 +62,7 @@ namespace Doloco.Pages
             campaignTargetDate.SetBinding(DatePicker.DateProperty, CreateCampaignViewModel.CampaignTargetDatePropertyName);
             layout.Children.Add(campaignTargetDate);
 
-            var button = new Button { Text = "Create Campaign", BackgroundColor = Helpers.Color.Blue.ToFormsColor() };
+            var button = new Button { Text = "Create Campaign" };
             button.SetBinding(Button.CommandProperty, CreateCircleViewModel.AddCommandPropertyName);
             layout.Children.Add(button);
 

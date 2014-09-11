@@ -36,7 +36,7 @@ namespace Doloco
             routingNumber.SetBinding(Entry.TextProperty, AddCircleAccountViewModel.RoutingNumberPropertyName);
 			layout.Children.Add(routingNumber);
 
-            var button = new Button { Text = "Create Circle", BackgroundColor = Helpers.Color.Blue.ToFormsColor() };
+            var button = new Button { Text = "Create Circle" };
             button.SetBinding(Button.CommandProperty, AddCircleAccountViewModel.AddCommandPropertyName);
 			layout.Children.Add (button);
 

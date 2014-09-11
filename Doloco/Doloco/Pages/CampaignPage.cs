@@ -59,8 +59,7 @@ namespace Doloco.Pages
 
             var button = new Button
             {
-                Text = "Donate Now!",
-                BackgroundColor = Helpers.Color.Blue.ToFormsColor()
+                Text = "Donate Now!"
             };
             button.Clicked += async (sender, e) =>
             {

@@ -40,8 +40,7 @@ namespace Doloco.Pages
 
             var createButton = new Button
             {
-                Text = "Create Circle",
-                BackgroundColor = Helpers.Color.Blue.ToFormsColor()
+                Text = "Create Circle"
             };
 
             createButton.Clicked += async (sender, e) =>

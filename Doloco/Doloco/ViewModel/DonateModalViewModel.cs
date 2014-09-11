@@ -34,8 +34,8 @@ namespace Doloco.ViewModel
         }
 
         public const string AmountPropertyName = "Amount";
-        private double _amount;
-        public double Amount
+        private string _amount = string.Empty;
+        public string Amount
         {
             get { return _amount; }
             set { SetProperty(ref _amount, value, AmountPropertyName); }

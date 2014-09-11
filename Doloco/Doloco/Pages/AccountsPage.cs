@@ -29,8 +29,7 @@ namespace Doloco
 
             var addButton = new Button
             {
-                Text = "Add Account",
-                BackgroundColor = Helpers.Color.Blue.ToFormsColor()
+                Text = "Add Account"
             };
             addButton.Clicked += async (sender, e) =>
             {
