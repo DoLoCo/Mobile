@@ -147,7 +147,7 @@ namespace DolocoApiClient
         }
 
         public Task<Campaign> CreateOrganizationCampaignAsync(int organizationId, string campaignName,
-            string campaignDescription)
+            string campaignDescription, string campaignTarget, DateTime campaignTargetDate)
         {
             var createCampaignUrl = String.Format(GetRoutePathUrl(DolocoApiRouteEnum.OrganizationCampaigns),
                 organizationId);
@@ -155,7 +155,9 @@ namespace DolocoApiClient
             var campaign = new Dictionary<string, string>
             {
                 {"title", campaignName},
-                {"description", campaignDescription}
+                {"description", campaignDescription},
+                {"target_amount", campaignTarget},
+                {"target_date", campaignTargetDate.ToString("yyyy-mm-dd")}
             };
 
             var campaignPayload = new Dictionary<string, Dictionary<string, string>>
@@ -187,7 +189,7 @@ namespace DolocoApiClient
             });
         }
 
-        public Task<Donation> CreateOrganizationCampaignDonationAsync(int organizationId, int campaignId, int amount,
+        public Task<Donation> CreateOrganizationCampaignDonationAsync(int organizationId, int campaignId, double amount,
             int bankAccountId)
         {
             var donationUrl = String.Format(GetRoutePathUrl(DolocoApiRouteEnum.OrganizationCampaignDonations),
@@ -195,7 +197,7 @@ namespace DolocoApiClient
 
             var donation = new Dictionary<string, int>
             {
-                {"amount", amount},
+                {"amount", (int)amount},
                 {"bank_account_id", bankAccountId}
             };
 

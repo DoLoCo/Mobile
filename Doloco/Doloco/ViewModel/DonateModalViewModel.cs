@@ -34,8 +34,8 @@ namespace Doloco.ViewModel
         }
 
         public const string AmountPropertyName = "Amount";
-        private string _amount = string.Empty;
-        public string Amount
+        private double _amount;
+        public double Amount
         {
             get { return _amount; }
             set { SetProperty(ref _amount, value, AmountPropertyName); }
@@ -53,19 +53,16 @@ namespace Doloco.ViewModel
 
         protected async Task ExecuteDonateCommand()
         {
-            int amount;
             BankAccount selectedAccount;
-
-            int.TryParse(_amount, out amount);
             _bankAccountDictionary.TryGetValue(_accountId, out selectedAccount);
         
             try
             {
                 await
                     App.ApiClient.CreateOrganizationCampaignDonationAsync(_organizationId, _campaignId,
-                        amount, selectedAccount.Id);
+                        _amount, selectedAccount.Id);
 
-                await _navigation.PopModalAsync();
+                await _navigation.PopAsync();
             }
             catch (Exception ex)
             {

@@ -34,7 +34,10 @@ namespace Doloco
 			button.SetBinding(Button.CommandProperty, AddAccountViewModel.AddCommandPropertyName);
 			layout.Children.Add (button);
 
-			Content = layout;
+		    Content = new ScrollView
+		    {
+		        Content = layout
+		    };
 		}
 	}
 }

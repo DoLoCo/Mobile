@@ -21,7 +21,7 @@ namespace Doloco.Pages
             OptionItems.Add(new CirclesOptionItem());
 			OptionItems.Add (new SettingsOptionItem ());
 
-            BackgroundColor = Color.FromHex("333333");
+            BackgroundColor = Color.FromHex("e0e4cc");
 
             var layout = new StackLayout { Spacing = 0, VerticalOptions = LayoutOptions.FillAndExpand };
 

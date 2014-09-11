@@ -49,7 +49,10 @@ namespace Doloco.Pages
             button.SetBinding(Button.CommandProperty, CreateCircleViewModel.AddCommandPropertyName);
             layout.Children.Add(button);
 
-            Content = layout;
+            Content = new ScrollView
+            {
+                Content = layout
+            };
         }
     }
 }

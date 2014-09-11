@@ -63,7 +63,7 @@ namespace Doloco.ViewModel
         {
             try
             {
-                await App.ApiClient.CreateOrganizationCampaignAsync(_orgId, _campaignName, _campaignDescription);
+                await App.ApiClient.CreateOrganizationCampaignAsync(_orgId, _campaignName, _campaignDescription, _campaignTarget, _campaignTargetDate);
 
                 await _navigation.PopAsync();
             }

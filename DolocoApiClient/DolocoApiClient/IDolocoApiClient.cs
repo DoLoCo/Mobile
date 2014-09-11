@@ -26,12 +26,12 @@ namespace DolocoApiClient
         Task<IEnumerable<Campaign>> GetOrganizationCampaignAsync(int organizationId);
 
 	    Task<Campaign> CreateOrganizationCampaignAsync(int organizationId, string campaignName,
-	        string campaignDescription);
+	        string campaignDescription, string campaignTarget, DateTime campaignTargetDate);
 
 	    Task<Campaign> GetCampaignAsync(int campaignId);
 	    Task<IEnumerable<Donation>> GetOrganizationCampaignDonationsAsync(int organizationId, int campaignId);
 
-	    Task<Donation> CreateOrganizationCampaignDonationAsync(int organizationId, int campaignId, int amount,
+	    Task<Donation> CreateOrganizationCampaignDonationAsync(int organizationId, int campaignId, double amount,
 	        int bankAccountId);
 	}
 }

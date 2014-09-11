@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace Doloco.Pages
 {
-    public class DonateModalPage:ContentPage
+    public class DonatePage:ContentPage
     {
         private readonly int _orgId;
         private readonly int _campaignId;
@@ -18,7 +18,7 @@ namespace Doloco.Pages
         private readonly Label _amountLabel;
         private const double _minAmount = 5;
  
-        public DonateModalPage(int orgId, int campaignId, IEnumerable<BankAccount> bankAccounts)
+        public DonatePage(int orgId, int campaignId, IEnumerable<BankAccount> bankAccounts)
         {
             _orgId = orgId;
             _campaignId = campaignId;
@@ -29,7 +29,7 @@ namespace Doloco.Pages
             var viewModel = new DonateModalViewModel(Navigation, _orgId, _campaignId, bankAccountDictionary);
             BindingContext = viewModel;
 
-            var layout = new StackLayout { Padding = 10 };
+            var layout = new StackLayout();
 
             var headerLabel = new Label
             {
@@ -39,20 +39,20 @@ namespace Doloco.Pages
 
             _amountLabel = new Label
             {
-                Text = String.Format("Donate: ${0:F0}", _minAmount)
+                Text = String.Format("Donate: ${0}", _minAmount)
             };
             layout.Children.Add(_amountLabel);
 
-            var amount = new Slider
+            var amount = new Stepper
             {
                 Maximum = 5000,
                 Minimum = _minAmount
             };
 
-            amount.SetBinding(Slider.ValueProperty, DonateModalViewModel.AmountPropertyName );
+            amount.SetBinding(Stepper.ValueProperty, DonateModalViewModel.AmountPropertyName );
             amount.ValueChanged += async (sender, e) =>
             {
-                _amountLabel.Text = String.Format("Donate: ${0:F0}", e.NewValue);
+                _amountLabel.Text = String.Format("Donate: ${0}", e.NewValue);
             };
             layout.Children.Add(amount);
 
@@ -64,6 +64,7 @@ namespace Doloco.Pages
             {
                 account.Items.Add(b.BankAccountName);
             }
+            account.SetBinding(Picker.SelectedIndexProperty, DonateModalViewModel.AccountIdPropertyName);
             layout.Children.Add(account);
 
             var button = new Button
@@ -74,7 +75,10 @@ namespace Doloco.Pages
             button.SetBinding(Button.CommandProperty, DonateModalViewModel.DonateCommandPropertyName);
             layout.Children.Add(button);
 
-            Content = new ScrollView { Content = layout };
+            Content = new ScrollView
+            {
+                Content = layout
+            };
         }
     }
 }

@@ -55,15 +55,20 @@ namespace Doloco.Pages
 
             email = new Entry { Text = "", Placeholder = "Email"};
             password = new Entry { Text = "", Placeholder = "Password", IsPassword = true};
-            Content = new StackLayout
+            Content = new ScrollView
             {
-                Padding = new Thickness(10, 40, 10, 10),
-                Children = {
-					logoLabel, 
-					email,
-					password,
-					button, create
-				}
+                Content = new StackLayout
+                {
+                    Padding = new Thickness(10, 40, 10, 10),
+                    Children =
+                    {
+                        logoLabel,
+                        email,
+                        password,
+                        button,
+                        create
+                    }
+                }
             };
         }
     }

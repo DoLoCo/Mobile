@@ -34,12 +34,12 @@ namespace Doloco.Pages
             };
             layout.Children.Add(_campaignTargetLabel);
 
-            var campaignTarget = new Slider
+            var campaignTarget = new Stepper
             {
                 Maximum = 5000,
                 Minimum = _minCampaignTarget
             };
-            campaignTarget.SetBinding(Slider.ValueProperty, CreateCampaignViewModel.CampaignTargetPropertyName);
+            campaignTarget.SetBinding(Stepper.ValueProperty, CreateCampaignViewModel.CampaignTargetPropertyName);
             campaignTarget.ValueChanged += async (sender, e) =>
             {
                 _campaignTargetLabel.Text = String.Format("Target Amount ${0}", e.NewValue);
@@ -63,7 +63,10 @@ namespace Doloco.Pages
             button.SetBinding(Button.CommandProperty, CreateCircleViewModel.AddCommandPropertyName);
             layout.Children.Add(button);
 
-            Content = layout;
+            Content = new ScrollView
+            {
+                Content = layout
+            };
         }
     }
 }

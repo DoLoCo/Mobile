@@ -75,8 +75,8 @@ namespace Doloco.Pages
                     }
                     else
                     {
-                        var donateModal = new DonateModalPage(_organizationId, _organizationId, enumerable);
-                        await Navigation.PushModalAsync(donateModal);
+                        var donateModal = new DonatePage(_organizationId, _campaignId, enumerable);
+                        await Navigation.PushAsync(donateModal);
                     }
                 }
                 catch (Exception ex)

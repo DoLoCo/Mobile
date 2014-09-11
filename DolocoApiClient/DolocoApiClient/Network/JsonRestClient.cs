@@ -91,20 +91,10 @@ namespace DolocoApiClient.Network
                 var payload = JsonConvert.DeserializeObject<TResponsePayload>(responseBody);
 
                 return new Response<TResponsePayload>(payload);
-            }
-
-            if (response.StatusCode == HttpStatusCode.BadRequest)
-            {
+            } else {
                 var error = JsonConvert.DeserializeObject<Error>(responseBody);
-                var errorPayload = new ApiErrorPayload()
-                {
-                    Message = error != null ? error.Message : null,
-                    RequestMethod = response.RequestMessage.Method,
-                    RequestUri = response.RequestMessage.RequestUri,
-                    ResponseStatus = response.StatusCode
-                };
-
-                return new Response<TResponsePayload>(errorPayload);
+                Debug.WriteLine(error.Message);
+                throw new Exception("Oops! Something Broke :(");
             }
 
             return null;

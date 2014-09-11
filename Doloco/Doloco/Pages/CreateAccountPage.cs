@@ -54,18 +54,23 @@ namespace Doloco.Pages
             lastName = new Entry { Text = "", Placeholder = "Last Name"};
             password = new Entry { Text = "", Placeholder = "Password", IsPassword = true};
             passwordConfirm = new Entry { Text = "", Placeholder = "Re-enter Password", IsPassword = true };
-            Content = new StackLayout
+            Content = new ScrollView
             {
-                Padding = new Thickness(10, 40, 10, 10),
-                Children = {
-					new Label { Text = "Create Account", Font = Font.SystemFontOfSize(NamedSize.Large) }, 
-					email,
-                    firstName,
-                    lastName,
-					password,
-					passwordConfirm,
-					button, cancel
-				}
+                Content = new StackLayout
+                {
+                    Padding = new Thickness(10, 40, 10, 10),
+                    Children =
+                    {
+                        new Label {Text = "Create Account", Font = Font.SystemFontOfSize(NamedSize.Large)},
+                        email,
+                        firstName,
+                        lastName,
+                        password,
+                        passwordConfirm,
+                        button,
+                        cancel
+                    }
+                }
             };
         }
     }

@@ -13,7 +13,7 @@ namespace DolocoApiClient.Models
         [DataMember(Name = "num")]
         public int Number { get; set; }
 
-        [DataMember]
+        [DataMember(Name = "error")]
         public string Message { get; set; }
     }
 }
