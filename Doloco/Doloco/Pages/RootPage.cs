@@ -16,7 +16,7 @@ namespace Doloco.Pages
 
         public RootPage()
         {
-            var optionsPage = new MenuPage { Icon = "settings.png", Title = "menu" };
+            var optionsPage = new MenuPage { Icon = "apptheme_ic_navigation_drawer.png", Title = "menu" };
 
             optionsPage.Menu.ItemSelected += (sender, e) => NavigateTo(e.SelectedItem as OptionItem);
 
@@ -34,9 +34,9 @@ namespace Doloco.Pages
             _previousItem = option;
 
             var displayPage = PageForOption(option);
+            displayPage.SetValue(TitleProperty, option.Title);
             Detail = new NavigationPage(displayPage);
 
-            Detail.SetValue(TitleProperty, option.Title);
             Detail.SetValue(IconProperty, option.Icon);
 
             IsPresented = false;

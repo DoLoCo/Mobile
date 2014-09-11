@@ -46,6 +46,8 @@ namespace Doloco.Pages
                 page.DisplayAlert("Error", ex.Message, "OK", "Cancel");
             }
 
+            this.Title = viewModel.Model.Title;
+
             var headerLabel = new Label
             {
                 Text = viewModel.Model.Title
@@ -57,6 +59,16 @@ namespace Doloco.Pages
                 Text = viewModel.Model.Description
             };
             stack.Children.Add(descLabel);
+
+            if (viewModel.Model.TargetAmount != null)
+            {
+                var campaignProgress = (double) (viewModel.Model.DonationAmount/viewModel.Model.TargetAmount);
+                var progressBar = new ProgressBar
+                {
+                    Progress = campaignProgress
+                };
+                stack.Children.Add(progressBar);
+            }
 
             var button = new Button
             {
@@ -88,7 +100,8 @@ namespace Doloco.Pages
             stack.Children.Add(button);
 
             var cell = new DataTemplate(typeof(ListTextCell));
-            cell.SetBinding(TextCell.TextProperty, "Amount");
+            cell.SetBinding(TextCell.TextProperty, "User.FirstName");
+            cell.SetBinding(TextCell.DetailProperty, "ActualAmount");
 
             var list = new ListView { ItemsSource = viewModel.DonationModel, ItemTemplate = cell };
             stack.Children.Add(list);

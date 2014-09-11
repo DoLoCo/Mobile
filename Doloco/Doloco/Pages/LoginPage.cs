@@ -43,14 +43,12 @@ namespace Doloco.Pages
             var create = new Button { Text = "Create Account" };
             create.Clicked += (sender, e) => MessagingCenter.Send<ContentPage>(this, "Create");
 
-            var logoLabel = new Label
+            var logoImage = new Image
             {
-                Text = "Doloco",
-                Font = Font.SystemFontOfSize(NamedSize.Large, FontAttributes.Bold),
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                XAlign = TextAlignment.Center, // Center the text in the blue box.
-                YAlign = TextAlignment.Center, // Center the text in the blue box.
+                Aspect = Aspect.AspectFit,
+                VerticalOptions = LayoutOptions.CenterAndExpand
             };
+            logoImage.Source = ImageSource.FromFile("splash.png");
 
             email = new Entry { Text = "", Placeholder = "Email"};
             password = new Entry { Text = "", Placeholder = "Password", IsPassword = true};
@@ -61,7 +59,7 @@ namespace Doloco.Pages
                     Padding = new Thickness(10, 40, 10, 10),
                     Children =
                     {
-                        logoLabel,
+                        logoImage,
                         email,
                         password,
                         button,

@@ -9,25 +9,32 @@ using Xamarin.Forms;
 
 namespace Doloco.Pages
 {
-    public class HomePage : ContentPage
+    public class HomePage : TabbedPage
     {
         public HomePage()
         {
-            BindingContext = new HomeViewModel(Navigation);
-            var layout = new StackLayout();
-
-            var label = new Label
+            this.Children.Add(new ContentPage
             {
-                Text = "Doloco",
-                Font = Font.SystemFontOfSize(NamedSize.Large, FontAttributes.Bold),
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                XAlign = TextAlignment.Center, // Center the text in the blue box.
-                YAlign = TextAlignment.Center, // Center the text in the blue box.
-            };
-
-            layout.Children.Add(label);
-
-            Content = layout;
+                Title = "Map",
+                Content = new BoxView
+                {
+                    Color = Color.Blue,
+                    HeightRequest = 100f,
+                    VerticalOptions = LayoutOptions.Center
+                },
+            }
+        );
+            this.Children.Add(new ContentPage
+            {
+                Title = "List",
+                Content = new StackLayout
+                {
+                    Children = {
+                    new BoxView { Color = Color.Blue },
+                    new BoxView { Color = Color.Red}
+                }
+                }
+            });
         }
     }
 }

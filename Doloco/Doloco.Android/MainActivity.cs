@@ -14,7 +14,7 @@ using Xamarin.Forms.Platform.Android;
 
 namespace Doloco.Droid
 {
-    [Activity(Label = "Doloco", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, Theme = "@android:style/Theme.Holo.Light")]
+	[Activity(Label = "Doloco", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, Theme = "@style/_AppTheme")]
     public class MainActivity : AndroidActivity, ILoginManager
     {
             

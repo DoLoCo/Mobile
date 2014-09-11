@@ -52,7 +52,7 @@ namespace Doloco.Pages
             };
 
             amount.SetBinding(Stepper.ValueProperty, DonateModalViewModel.AmountPropertyName );
-            amount.Value = _minAmount;
+            amount.SetValue(Stepper.ValueProperty, _minAmount);
             amount.ValueChanged += async (sender, e) =>
             {
                 _amountLabel.Text = String.Format("Donate: {0}", e.NewValue.ToString("C", CultureInfo.CurrentCulture));

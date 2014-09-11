@@ -10,6 +10,8 @@ namespace DolocoApiClient.Models
 		public int BankAccountId { get; set; }
 		public int CampaignId { get; set; }
 		public int Amount { get; set; }
+        public int ActualAmount { get; set; }
+        public User User { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 	}

@@ -40,6 +40,8 @@ namespace Doloco.Pages
                 page.DisplayAlert("Error", ex.Message, "OK", "Cancel");
             }
 
+            this.Title = viewModel.OrganizationModel.Name;
+
             var headerLabel = new Label
             {
                 Text = viewModel.OrganizationModel.Name

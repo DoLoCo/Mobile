@@ -42,7 +42,7 @@ namespace Doloco.Pages
                 Increment = 0.5
             };
             campaignTarget.SetBinding(Stepper.ValueProperty, CreateCampaignViewModel.CampaignTargetPropertyName);
-            campaignTarget.Value = _minCampaignTarget;
+            campaignTarget.SetValue(Stepper.ValueProperty, _minCampaignTarget);
             campaignTarget.ValueChanged += async (sender, e) =>
             {
                 _campaignTargetLabel.Text = String.Format("Target Amount {0}", e.NewValue.ToString("C", CultureInfo.CurrentCulture));
