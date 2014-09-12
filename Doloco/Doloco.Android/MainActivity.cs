@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.Database;
 using Android.Locations;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Doloco.Pages;
+using Java.Security;
 using Mindscape.Raygun4Net;
 using Xamarin;
 using Xamarin.Forms;
@@ -21,7 +23,7 @@ using Xamarin.Forms.Platform.Android;
 namespace Doloco.Droid
 {
 	[Activity(Label = "Doloco", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, Theme = "@style/_AppTheme")]
-    public class MainActivity : AndroidActivity, ILoginManager, ILocationListener
+    public class MainActivity : AndroidActivity, ILoginManager, ILocationListener, IMediaPicker
     {
             
 		protected override void OnCreate (Bundle bundle)
@@ -104,6 +106,47 @@ namespace Doloco.Droid
                 App.UserLatitude = _currentLocation.Latitude;
                 App.UserLongitude = _currentLocation.Longitude;
             }
+        }
+        #endregion
+
+        #region IMediaPicker implementation
+
+	    private string _imgPath;
+	    public void InitializeMediaPicker()
+	    {
+	            Intent = new Intent();
+                Intent.SetType("image/*");
+                Intent.SetAction(Intent.ActionGetContent);
+	            StartActivityForResult(Intent.CreateChooser(Intent, "Select Picture"), 1000);
+	    }
+
+	    public string GetImage()
+	    {
+	        InitializeMediaPicker();
+
+	        return _imgPath;
+	    }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+        {
+            if ((requestCode != 1000) || (resultCode != Result.Ok) || (data == null)) return;
+            var uri = data.Data;
+            _imgPath = GetPathToImage(uri);
+        }
+
+        private string GetPathToImage(Android.Net.Uri uri)
+        {
+            string path = null;
+            // The projection contains the columns we want to return in our query.
+            var projection = new[] { Android.Provider.MediaStore.Images.Media.InterfaceConsts.Data };
+            using (var cursor = ManagedQuery(uri, projection, null, null, null))
+            {
+                if (cursor == null) return path;
+                var columnIndex = cursor.GetColumnIndexOrThrow(Android.Provider.MediaStore.Images.Media.InterfaceConsts.Data);
+                cursor.MoveToFirst();
+                path = cursor.GetString(columnIndex);
+            }
+            return path;
         }
         #endregion
     }

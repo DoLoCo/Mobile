@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,17 @@ namespace Doloco.Pages
             BindingContext = viewModel;
 
             var layout = new StackLayout();
+
+            var uploadImageBtn = new Button
+            {
+                Text = "Upload Image"
+            };
+            uploadImageBtn.Clicked += async (sender, e) =>
+            {
+                var path = App.MediaPicker.GetImage();
+                Debug.WriteLine(path);
+            };
+            layout.Children.Add(uploadImageBtn);
 
             var campaignName = new Entry{ Placeholder = "Name" };
             campaignName.SetBinding(Entry.TextProperty, CreateCampaignViewModel.CampaignNamePropertyName);

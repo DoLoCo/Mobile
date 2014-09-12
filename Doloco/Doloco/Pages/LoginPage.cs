@@ -45,10 +45,10 @@ namespace Doloco.Pages
 
             var logoImage = new Image
             {
-                Aspect = Aspect.AspectFit,
-                VerticalOptions = LayoutOptions.CenterAndExpand
+                Aspect = Aspect.AspectFill,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Source = ImageSource.FromFile("splash.png")
             };
-            logoImage.Source = ImageSource.FromFile("splash.png");
 
             email = new Entry { Text = "", Placeholder = "Email"};
             password = new Entry { Text = "", Placeholder = "Password", IsPassword = true};

@@ -14,6 +14,7 @@ namespace Doloco
 	{
         static Assembly _reflectionAssembly;
 	    static ILoginManager loginManager;
+	    public static IMediaPicker MediaPicker;
 	    public static double UserLatitude;
         public static double UserLongitude;
 	    public static readonly IDolocoApiClient ApiClient;
@@ -51,6 +52,11 @@ namespace Doloco
         {
             return new RootPage();
         }
+
+	    public static void SetMediaPicker(IMediaPicker imp)
+	    {
+	        MediaPicker = imp;
+	    }
 
         public static void Init(Assembly assembly)
         {
