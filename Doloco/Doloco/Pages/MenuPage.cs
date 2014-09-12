@@ -58,6 +58,10 @@ namespace Doloco.Pages
 
             layout.Children.Add(Menu);
 
+            var logoutButton = new Button { Text = "Logout" };
+            logoutButton.Clicked += (sender, e) => App.Logout();
+            layout.Children.Add(logoutButton);
+
             Content = layout;
         }
     }

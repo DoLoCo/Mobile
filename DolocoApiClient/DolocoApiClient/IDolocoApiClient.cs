@@ -29,6 +29,7 @@ namespace DolocoApiClient
 	        string campaignDescription, string campaignTarget, DateTime campaignTargetDate);
 
 	    Task<Campaign> GetCampaignAsync(int campaignId);
+	    Task<IEnumerable<Campaign>> GetNearbyCampaignsAsync(double lat, double lng);
 	    Task<IEnumerable<Donation>> GetOrganizationCampaignDonationsAsync(int organizationId, int campaignId);
 
 	    Task<Donation> CreateOrganizationCampaignDonationAsync(int organizationId, int campaignId, string amount,

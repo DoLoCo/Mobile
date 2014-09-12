@@ -18,6 +18,8 @@ namespace DolocoApiClient.Models
 		public string Title { get; set; }
 		public string Description { get; set; }
 		public CampaignStatus Status { get; set; }
+        [JsonProperty("organization")]
+        public Organization Organization { get; set; }
         [JsonProperty("donations_amount_sum")]
 		public int DonationAmount { get; set; }
         

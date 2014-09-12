@@ -32,5 +32,21 @@ namespace DolocoApiClient
 
             return _client.GetAsync<Campaign>(String.Format(campaignUrl, campaignId)).Process();
         }
+
+        public Task<IEnumerable<Campaign>> GetNearbyCampaignsAsync(double lat, double lng)
+        {
+            var campaignsUrl = String.Format("{0}?lat={1}&lng={2}", GetRoutePathUrl(DolocoApiRouteEnum.Campaigns), lat,
+                lng);
+
+            return _client.GetAsync<CampaignsPayload>(campaignsUrl).Process(payload =>
+            {
+                var campaigns = new List<Campaign>();
+
+                if (payload.Campaigns != null)
+                    campaigns = payload.Campaigns.ToList();
+
+                return campaigns.AsEnumerable();
+            });
+        } 
     }
 }

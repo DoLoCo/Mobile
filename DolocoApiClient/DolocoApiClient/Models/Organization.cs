@@ -16,8 +16,8 @@ namespace DolocoApiClient.Models
         public string AddressLine2 { get; set; }
         public string City { get; set; }
         public string PostalCode { get; set; }
-        public decimal? Lat { get; set; }
-        public decimal? Lng { get; set; }
+        public double Lat { get; set; }
+        public double Lng { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

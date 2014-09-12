@@ -13,18 +13,13 @@ namespace Doloco.Pages
     {
         public HomePage()
         {
-            this.Children.Add(new ContentPage
+            var mapPage = new CampaignMapPage
             {
-                Title = "Map",
-                Content = new BoxView
-                {
-                    Color = Color.Blue,
-                    HeightRequest = 100f,
-                    VerticalOptions = LayoutOptions.Center
-                },
-            }
-        );
-            this.Children.Add(new ContentPage
+                Title = "Map"
+            };
+            Children.Add(mapPage);
+
+            Children.Add(new ContentPage
             {
                 Title = "List",
                 Content = new StackLayout
@@ -35,6 +30,11 @@ namespace Doloco.Pages
                 }
                 }
             });
+        }
+
+        public ContentPage MapPage()
+        {
+            return new ContentPage();
         }
     }
 }

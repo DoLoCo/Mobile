@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Mindscape.Raygun4Net;
+using MonoTouch.CoreLocation;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using Xamarin;
 using Xamarin.Forms;
 
 namespace Doloco.iOS
@@ -12,18 +15,22 @@ namespace Doloco.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : UIApplicationDelegate, ILoginManager
+    public partial class AppDelegate : UIApplicationDelegate, ILoginManager, ICLLocationManagerDelegate
     {
         private UIWindow window;
 
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Forms.Init();
+            FormsMaps.Init();
             RaygunClient.Attach("i27YVEgFvRzBI8gZoIeMkg==");
+            InitializeLocationManager();
 
-            window = new UIWindow(UIScreen.MainScreen.Bounds);
+            window = new UIWindow(UIScreen.MainScreen.Bounds)
+            {
+                RootViewController = App.GetLoginPage(this).CreateViewController()
+            };
 
-            window.RootViewController = App.GetLoginPage(this).CreateViewController();
             window.MakeKeyAndVisible();
 
             return true;
@@ -44,6 +51,39 @@ namespace Doloco.iOS
             window.MakeKeyAndVisible();
         }
 
+        #endregion
+
+        #region ICLLocationManager implementation
+
+        private CLLocationManager _locationManager;
+        public void InitializeLocationManager()
+        {
+            _locationManager = new CLLocationManager();
+
+            if (CLLocationManager.LocationServicesEnabled)
+            {
+                _locationManager.StartMonitoringSignificantLocationChanges();
+            }
+            else
+            {
+                Console.WriteLine("Location services not enabled, please enable this in your Settings");
+            }
+
+            _locationManager.LocationsUpdated += (o, e) =>
+            {
+                var currentLocation = e.Locations.LastOrDefault();
+                if (currentLocation != null)
+                {
+                    App.UserLatitude = currentLocation.Coordinate.Latitude;
+                    App.UserLongitude = currentLocation.Coordinate.Longitude;
+                }
+                else
+                {
+                    App.UserLatitude = 0;
+                    App.UserLongitude = 0;
+                }
+            };
+        }
         #endregion
     }
 }

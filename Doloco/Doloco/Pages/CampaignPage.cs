@@ -38,7 +38,8 @@ namespace Doloco.Pages
             try
             {
                 viewModel.Model = await App.ApiClient.GetCampaignAsync(_campaignId);
-                viewModel.DonationModel = await App.ApiClient.GetOrganizationCampaignDonationsAsync(_organizationId, _campaignId);
+                viewModel.DonationModel =
+                    await App.ApiClient.GetOrganizationCampaignDonationsAsync(_organizationId, _campaignId);
             }
             catch (Exception ex)
             {
@@ -48,33 +49,51 @@ namespace Doloco.Pages
 
             this.Title = viewModel.Model.Title;
 
-            var headerLabel = new Label
-            {
-                Text = viewModel.Model.Title
-            };
-            stack.Children.Add(headerLabel);
+            var campaignView = _createCampaignLayout(viewModel);
+            stack.Children.Add(campaignView);
 
-            var descLabel = new Label
+            var cell = new DataTemplate(typeof(ListTextCell));
+            cell.SetBinding(TextCell.TextProperty, "User.FirstName");
+            cell.SetBinding(TextCell.DetailProperty, "ActualAmount");
+
+            var list = new ListView { ItemsSource = viewModel.DonationModel, ItemTemplate = cell };
+            stack.Children.Add(list);
+
+            Content = stack;
+        }
+
+        private StackLayout _createCampaignLayout(CampaignViewModel viewModel)
+        {
+            var campaignImage = new Image
             {
-                Text = viewModel.Model.Description
+                Source = new UriImageSource
+                {
+                    Uri = new Uri("http://s3.amazonaws.com/doloco_images/campaign_pics/placeholder-campaign.png"),
+                    CachingEnabled = true,
+                    CacheValidity = new TimeSpan(5, 0, 0, 0)
+                },
+                Aspect = Aspect.Fill
             };
-            stack.Children.Add(descLabel);
+
+            var campaignDesc = new Label
+            {
+                Text = viewModel.Model.Description,
+                TextColor = Color.White
+            };
+
+            var campaignProgressBar = new ProgressBar();
 
             if (viewModel.Model.TargetAmount != null)
             {
                 var campaignProgress = (double) (viewModel.Model.DonationAmount/viewModel.Model.TargetAmount);
-                var progressBar = new ProgressBar
-                {
-                    Progress = campaignProgress
-                };
-                stack.Children.Add(progressBar);
+                campaignProgressBar.SetValue(ProgressBar.ProgressProperty, campaignProgress);
             }
 
-            var button = new Button
+            var donateButton = new Button
             {
                 Text = "Donate Now!"
             };
-            button.Clicked += async (sender, e) =>
+            donateButton.Clicked += async (sender, e) =>
             {
                 try
                 {
@@ -97,16 +116,20 @@ namespace Doloco.Pages
                     page.DisplayAlert("Error", ex.Message, "OK", "Cancel");
                 }
             };
-            stack.Children.Add(button);
 
-            var cell = new DataTemplate(typeof(ListTextCell));
-            cell.SetBinding(TextCell.TextProperty, "User.FirstName");
-            cell.SetBinding(TextCell.DetailProperty, "ActualAmount");
+            var campaignView = new StackLayout
+            {
+                BackgroundColor = Helpers.Color.DarkGray.ToFormsColor(),
+                Children =
+                {
+                    campaignImage,
+                    campaignDesc,
+                    campaignProgressBar,
+                    donateButton
+                }
+            };
 
-            var list = new ListView { ItemsSource = viewModel.DonationModel, ItemTemplate = cell };
-            stack.Children.Add(list);
-
-            Content = stack;
+            return campaignView;
         }
     }
 }

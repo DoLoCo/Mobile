@@ -10,11 +10,11 @@
       <File FileName="Doloco\Doloco\ViewModel\CirclesViewModel.cs" Line="1" Column="1" />
       <File FileName="Doloco\Doloco\Pages\HomePage.cs" Line="1" Column="1" />
       <File FileName="Doloco\Doloco.Android\MainActivity.cs" Line="1" Column="1" />
-      <File FileName="Doloco\Doloco.Android\Resources\values-v9\themes_apptheme.xml" Line="2" Column="2" />
+      <File FileName="Doloco\Doloco.Android\Resources\values-v9\themes_apptheme.xml" Line="1" Column="1" />
       <File FileName="Doloco\Doloco.Android\Resources\values\styles_apptheme.xml" Line="1" Column="1" />
-      <File FileName="Doloco\Doloco.Android\Resources\values\themes_apptheme.xml" Line="70" Column="70" />
+      <File FileName="Doloco\Doloco.Android\Resources\values\themes_apptheme.xml" Line="13" Column="13" />
       <File FileName="Doloco\Doloco.Android\Resources\values-v11\styles_apptheme.xml" Line="1" Column="1" />
-      <File FileName="Doloco\Doloco.Android\Resources\values-v11\themes_apptheme.xml" Line="2" Column="2" />
+      <File FileName="Doloco\Doloco.Android\Resources\values-v11\themes_apptheme.xml" Line="1" Column="1" />
       <File FileName="Doloco\Doloco.Android\Resources\values\styles_doloco.xml" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

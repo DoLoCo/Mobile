@@ -14,6 +14,8 @@ namespace Doloco
 	{
         static Assembly _reflectionAssembly;
 	    static ILoginManager loginManager;
+	    public static double UserLatitude;
+        public static double UserLongitude;
 	    public static readonly IDolocoApiClient ApiClient;
 	    public static string Token;
         internal static IDictionary<Type, Type> TypeMap;
