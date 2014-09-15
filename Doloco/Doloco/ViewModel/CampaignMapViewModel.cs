@@ -32,16 +32,20 @@ namespace Doloco.ViewModel
             {
                 var campaign = (Campaign) model;
                 var organization = campaign.Organization;
-
-                var position = new Position(organization.Lat, organization.Lng);
-                var pin = new Pin
+                if (organization.Lat != null && organization.Lng != null)
                 {
-                    Type = PinType.Place,
-                    Position = position,
-                    Label = campaign.ToString(),
-                    Address = organization.AddressLine1.ToString()
-                };
-                return pin;
+                    var position = new Position((double) organization.Lat, (double) organization.Lng);
+                    var pin = new Pin
+                    {
+                        Type = PinType.Place,
+                        Position = position,
+                        Label = campaign.ToString(),
+                        Address = organization.AddressLine1.ToString()
+                    };
+                    return pin;
+                }
+
+                return null;
             }).ToList();
 
             return pins;

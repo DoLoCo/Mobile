@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Newtonsoft.Json;
 
 namespace DolocoApiClient.Models
@@ -13,6 +14,7 @@ namespace DolocoApiClient.Models
 		public string LastName { get; set; }
         [JsonProperty("email")]
 		public string Email { get; set; }
+        public string Avatar { get; set; }
 	}
 }
 

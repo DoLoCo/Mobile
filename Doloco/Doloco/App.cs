@@ -22,9 +22,15 @@ namespace Doloco
         internal static IDictionary<Type, Type> TypeMap;
         internal static readonly MethodInfo GetDependency;
 
+        private static readonly Dictionary<string, string> _appEnv = new Dictionary<string, string>
+        {
+            {"staging", "http://dolocony.asuscomm.com:3000/api/v1"},
+            {"live", "https://doloco.io/api/v1"}
+        };
+
         static App()
         {
-            ApiClient = new DolocoApiClient.DolocoApiClient("http://dolocony.asuscomm.com:3000/api/v1");
+            ApiClient = new DolocoApiClient.DolocoApiClient(_appEnv["staging"]);
             Token = null;
 
 			TypeMap = new Dictionary<Type, Type> 

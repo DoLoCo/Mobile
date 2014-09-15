@@ -30,17 +30,16 @@ namespace Doloco.Pages
             var viewModel = new DonateModalViewModel(Navigation, _orgId, _campaignId, bankAccountDictionary);
             BindingContext = viewModel;
 
-            var layout = new StackLayout();
+            var layout = new StackLayout {Padding = 10};
 
-            var headerLabel = new Label
-            {
-                Text = "Donate"
-            };
-            layout.Children.Add(headerLabel);
+            this.Title = "Donate";
 
             _amountLabel = new Label
             {
-                Text = String.Format("Donate: {0}", _minAmount.ToString("C", CultureInfo.CurrentCulture))
+                Text = String.Format("Donate: {0}", _minAmount.ToString("C", CultureInfo.CurrentCulture)),
+                Font = Font.BoldSystemFontOfSize(40),
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.Center
             };
             layout.Children.Add(_amountLabel);
 
@@ -48,7 +47,8 @@ namespace Doloco.Pages
             {
                 Maximum = 5000,
                 Minimum = _minAmount,
-                Increment = 0.5
+                Increment = 0.5,
+                HorizontalOptions = LayoutOptions.Center
             };
 
             amount.SetBinding(Stepper.ValueProperty, DonateModalViewModel.AmountPropertyName );
@@ -69,6 +69,13 @@ namespace Doloco.Pages
             }
             account.SetBinding(Picker.SelectedIndexProperty, DonateModalViewModel.AccountIdPropertyName);
             layout.Children.Add(account);
+
+            var digicertSeal = new Image
+            {
+                Source = ImageSource.FromResource("digicert.png"),
+                Aspect = Aspect.Fill
+            };
+            layout.Children.Add(digicertSeal);
 
             var button = new Button
             {

@@ -137,8 +137,8 @@ Global
 		{C3B5DA25-4142-4AA6-A32F-5F27A698121C}.Release|iPhone.Build.0 = Release|iPhone
 		{C3B5DA25-4142-4AA6-A32F-5F27A698121C}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{C3B5DA25-4142-4AA6-A32F-5F27A698121C}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{C3B5DA25-4142-4AA6-A32F-5F27A698121C}.Release|Mixed Platforms.ActiveCfg = Release|iPhone
-		{C3B5DA25-4142-4AA6-A32F-5F27A698121C}.Release|Mixed Platforms.Build.0 = Release|iPhone
+		{C3B5DA25-4142-4AA6-A32F-5F27A698121C}.Release|Mixed Platforms.ActiveCfg = Release|iPhoneSimulator
+		{C3B5DA25-4142-4AA6-A32F-5F27A698121C}.Release|Mixed Platforms.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

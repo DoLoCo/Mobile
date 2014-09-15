@@ -42,7 +42,8 @@ namespace Doloco
 
             Content = new ScrollView
             {
-                Content = layout
+                Content = layout,
+                Padding = new Thickness(10, 10, 10, 20)
             };
 		}
 	}

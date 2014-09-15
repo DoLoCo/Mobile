@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Doloco.Helpers;
 using Doloco.ViewModel;
 using Doloco.Views;
 using DolocoApiClient.Models;
 using Xamarin.Forms;
+using xBrainLab.Security.Cryptography;
+using Color = Xamarin.Forms.Color;
 
 namespace Doloco.Pages
 {
@@ -40,6 +44,7 @@ namespace Doloco.Pages
                 viewModel.Model = await App.ApiClient.GetCampaignAsync(_campaignId);
                 viewModel.DonationModel =
                     await App.ApiClient.GetOrganizationCampaignDonationsAsync(_organizationId, _campaignId);
+                viewModel.CamapignUser = viewModel.Model.Organization.OrganizationAdmins.First().User;
             }
             catch (Exception ex)
             {
@@ -49,12 +54,15 @@ namespace Doloco.Pages
 
             this.Title = viewModel.Model.Title;
 
-            var campaignView = _createCampaignLayout(viewModel);
+            var campaignView = await _createCampaignLayout(viewModel);
             stack.Children.Add(campaignView);
 
-            var cell = new DataTemplate(typeof(ListTextCell));
-            cell.SetBinding(TextCell.TextProperty, "User.FirstName");
-            cell.SetBinding(TextCell.DetailProperty, "ActualAmount");
+/*            _addDonationUserAvatars(viewModel);*/
+
+            var cell = new DataTemplate(typeof(UserActionCell));
+/*            cell.SetBinding(ImageCell.ImageSourceProperty, new Binding("User.Avatar"));*/
+            cell.SetBinding(TextCell.TextProperty, new Binding("User.FirstName") {StringFormat = "{0} Donated:"});
+            cell.SetBinding(TextCell.DetailProperty, new Binding("Amount") {Converter = new CurrencyDisplayConverter()});
 
             var list = new ListView { ItemsSource = viewModel.DonationModel, ItemTemplate = cell };
             stack.Children.Add(list);
@@ -62,23 +70,38 @@ namespace Doloco.Pages
             Content = stack;
         }
 
-        private StackLayout _createCampaignLayout(CampaignViewModel viewModel)
+        private static void _addDonationUserAvatars(CampaignViewModel viewModel)
         {
-            var campaignImage = new Image
+            foreach (var donation in viewModel.DonationModel.Cast<Donation>())
             {
-                Source = new UriImageSource
-                {
-                    Uri = new Uri("http://s3.amazonaws.com/doloco_images/campaign_pics/placeholder-campaign.png"),
-                    CachingEnabled = true,
-                    CacheValidity = new TimeSpan(5, 0, 0, 0)
-                },
-                Aspect = Aspect.Fill
+                donation.User.Avatar = _getUserAvatarUrl(donation.User.Email);
+            }
+        }
+
+        private async Task<StackLayout> _createCampaignLayout(CampaignViewModel viewModel)
+        {
+            var emailAvatar = _getUserAvatarUrl(viewModel.CamapignUser.Email);
+            
+            var fullName = string.Format("{0} {1}", viewModel.CamapignUser.FirstName, viewModel.CamapignUser.LastName);
+            var createdStr = String.Format("Created {0}", viewModel.Model.CreatedAt.ToString("D"));
+
+            var campaignCreatorCell = new DataTemplate(typeof(ImageCell));
+            campaignCreatorCell.SetValue(ImageCell.ImageSourceProperty, ImageSource.FromUri(new Uri(emailAvatar)));
+            campaignCreatorCell.SetValue(TextCell.TextProperty, fullName);
+            campaignCreatorCell.SetValue(TextCell.DetailProperty, createdStr);
+            var campaignCreatorList = new List<CampaignViewModel>
+            {
+                viewModel
             };
+
+            var campaignCreatorView = new ListView { ItemsSource = campaignCreatorList, ItemTemplate = campaignCreatorCell, BackgroundColor = Color.White, RowHeight = 60, MinimumHeightRequest = 60};
 
             var campaignDesc = new Label
             {
                 Text = viewModel.Model.Description,
-                TextColor = Color.White
+                TextColor = Color.White,
+                Font = Font.SystemFontOfSize(NamedSize.Large),
+                VerticalOptions = LayoutOptions.CenterAndExpand
             };
 
             var campaignProgressBar = new ProgressBar();
@@ -120,9 +143,10 @@ namespace Doloco.Pages
             var campaignView = new StackLayout
             {
                 BackgroundColor = Helpers.Color.DarkGray.ToFormsColor(),
+                Padding = new Thickness(10, 10, 10, 20),
                 Children =
                 {
-                    campaignImage,
+                    campaignCreatorView,
                     campaignDesc,
                     campaignProgressBar,
                     donateButton
@@ -130,6 +154,13 @@ namespace Doloco.Pages
             };
 
             return campaignView;
+        }
+
+        private static string _getUserAvatarUrl(string userEmail)
+        {
+            var emailHash = MD5.GetHashString(userEmail);
+            return String.Format("http://www.gravatar.com/avatar/{0}?f=g",
+                    emailHash);
         }
     }
 }

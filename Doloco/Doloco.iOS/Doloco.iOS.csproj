@@ -204,6 +204,18 @@
   <ItemGroup>
     <BundleResource Include="Resources\apptheme_ic_navigation_drawer.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tools3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\credit22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\map49.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\map52.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.1.2.2.6243\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.2.2.6243\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

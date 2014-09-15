@@ -185,7 +185,9 @@ namespace DolocoApiClient
                 var donations = new List<Donation>();
 
                 if (payload.Donations != null)
+                {
                     donations = payload.Donations.ToList();
+                }
 
                 return donations.AsEnumerable();
             });

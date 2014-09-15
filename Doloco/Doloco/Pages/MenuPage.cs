@@ -17,6 +17,7 @@ namespace Doloco.Pages
 
         public MenuPage()
         {
+            OptionItems.Clear();
             OptionItems.Add(new HomeOptionItem());
             OptionItems.Add(new CirclesOptionItem());
 			OptionItems.Add (new SettingsOptionItem ());

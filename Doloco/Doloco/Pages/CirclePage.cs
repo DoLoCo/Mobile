@@ -44,15 +44,17 @@ namespace Doloco.Pages
 
             var headerLabel = new Label
             {
-                Text = viewModel.OrganizationModel.Name
+                Text = viewModel.OrganizationModel.Name,
+                TextColor = Color.White,
+                Font = Font.BoldSystemFontOfSize(20),
+                HorizontalOptions = LayoutOptions.Center
             };
-            stack.Children.Add(headerLabel);
 
             var descLabel = new Label
             {
-                Text = viewModel.OrganizationModel.Description
+                Text = viewModel.OrganizationModel.Description,
+                TextColor = Color.White
             };
-            stack.Children.Add(descLabel);
 
             var button = new Button
             {
@@ -63,7 +65,19 @@ namespace Doloco.Pages
                 var createCampaignPage = new CreateCampaignPage(_circleId);
                 await Navigation.PushAsync(createCampaignPage);
             };
-            stack.Children.Add(button);
+            var cirleDetailView = new StackLayout
+            {
+                BackgroundColor = Helpers.Color.DarkGray.ToFormsColor(),
+                Padding = new Thickness(10, 10, 10, 20),
+                Children =
+                {
+                    headerLabel,
+                    descLabel,
+                    button
+                }
+            };
+
+            stack.Children.Add(cirleDetailView);
 
             var cell = new DataTemplate(typeof(ListTextCell));
             cell.SetBinding(TextCell.TextProperty, "Title");

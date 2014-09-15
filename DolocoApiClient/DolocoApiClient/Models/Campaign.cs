@@ -27,6 +27,7 @@ namespace DolocoApiClient.Models
         public int? TargetAmount { get; set; }
         [JsonProperty("target_date")]
         public DateTime? TargetDate { get; set; }
+        [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 	}

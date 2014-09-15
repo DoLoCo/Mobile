@@ -21,6 +21,14 @@ namespace Doloco.iOS
 
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            UIButton.Appearance.TintColor = UIColor.LightGray;
+            UIButton.Appearance.SetTitleColor(UIColor.FromRGB(0, 127, 14), UIControlState.Normal);
+            UISlider.Appearance.ThumbTintColor = UIColor.Red;
+            UISlider.Appearance.MinimumTrackTintColor = UIColor.Orange;
+            UISlider.Appearance.MaximumTrackTintColor = UIColor.Yellow;
+            UIProgressView.Appearance.ProgressTintColor = UIColor.Yellow;
+            UIProgressView.Appearance.TrackTintColor = UIColor.Orange;
+
             Forms.Init();
             FormsMaps.Init();
             RaygunClient.Attach("i27YVEgFvRzBI8gZoIeMkg==");

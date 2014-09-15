@@ -4,18 +4,18 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DolocoApiClient.Models;
 using Xamarin.Forms;
 
 namespace Doloco.Helpers
 {
-    public class CurrencyDisplayConverter : IValueConverter
+    public class FullNameConverter:IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var amount = (int) value;
-            var decimalAmount = (decimal)amount/100;
+            var user = (User) value;
 
-            return decimalAmount.ToString("C", new CultureInfo("en-US"));
+            return String.Format("{0} {1}", user.FirstName, user.LastName);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

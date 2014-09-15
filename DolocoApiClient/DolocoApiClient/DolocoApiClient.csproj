@@ -48,6 +48,7 @@
     <Compile Include="Models\Error.cs" />
     <Compile Include="Models\IDolocoEntity.cs" />
     <Compile Include="Models\Organization.cs" />
+    <Compile Include="Models\OrganizationAdmin.cs" />
     <Compile Include="Payloads\ApiErrorPayload.cs" />
     <Compile Include="Payloads\BankAccountsPayload.cs" />
     <Compile Include="Payloads\DonationsPayload.cs" />

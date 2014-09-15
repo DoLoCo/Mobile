@@ -11,12 +11,12 @@ namespace Doloco.Models
     {
         public override string Title
         {
-            get { return "Home"; }
+            get { return "Nearby"; }
         }
 
         public override string Icon
         {
-            get { return "Icon.png"; }
+            get { return "map49.png"; }
         }
     }
 
@@ -29,7 +29,7 @@ namespace Doloco.Models
 
         public override string Icon
         {
-            get { return "Icon.png"; }
+            get { return "map52.png"; }
         }
     }
 
@@ -41,7 +41,7 @@ namespace Doloco.Models
 
 		public override string Icon
 		{
-			get { return "Icon.png"; }
+			get { return "tools3.png"; }
 		}
 	}
 

@@ -35,7 +35,7 @@ namespace DolocoApiClient
 
         public Task<IEnumerable<Campaign>> GetNearbyCampaignsAsync(double lat, double lng)
         {
-            var campaignsUrl = String.Format("{0}?lat={1}&lng={2}", GetRoutePathUrl(DolocoApiRouteEnum.Campaigns), lat,
+            var campaignsUrl = String.Format("{0}?latitude={1}&longitude={2}", GetRoutePathUrl(DolocoApiRouteEnum.Campaigns), lat,
                 lng);
 
             return _client.GetAsync<CampaignsPayload>(campaignsUrl).Process(payload =>

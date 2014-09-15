@@ -64,7 +64,8 @@ namespace Doloco.Pages
                         password,
                         button,
                         create
-                    }
+                    },
+                    BackgroundColor = Helpers.Color.FromHex(0xfa6a00).ToFormsColor()
                 }
             };
         }

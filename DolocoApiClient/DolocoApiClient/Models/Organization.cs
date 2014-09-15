@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace DolocoApiClient.Models
 {
@@ -16,9 +17,11 @@ namespace DolocoApiClient.Models
         public string AddressLine2 { get; set; }
         public string City { get; set; }
         public string PostalCode { get; set; }
-        public double Lat { get; set; }
-        public double Lng { get; set; }
+        public double? Lat { get; set; }
+        public double? Lng { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        [JsonProperty("organization_admins")]
+        public IEnumerable<OrganizationAdmin> OrganizationAdmins { get; set; }
     }
 }

@@ -22,17 +22,6 @@ namespace Doloco.Pages
 
             var layout = new StackLayout();
 
-            var uploadImageBtn = new Button
-            {
-                Text = "Upload Image"
-            };
-            uploadImageBtn.Clicked += async (sender, e) =>
-            {
-                var path = App.MediaPicker.GetImage();
-                Debug.WriteLine(path);
-            };
-            layout.Children.Add(uploadImageBtn);
-
             var campaignName = new Entry{ Placeholder = "Name" };
             campaignName.SetBinding(Entry.TextProperty, CreateCampaignViewModel.CampaignNamePropertyName);
             layout.Children.Add(campaignName);
@@ -51,7 +40,8 @@ namespace Doloco.Pages
             {
                 Maximum = 5000,
                 Minimum = _minCampaignTarget,
-                Increment = 0.5
+                Increment = 0.5,
+                HorizontalOptions = LayoutOptions.Center
             };
             campaignTarget.SetBinding(Stepper.ValueProperty, CreateCampaignViewModel.CampaignTargetPropertyName);
             campaignTarget.SetValue(Stepper.ValueProperty, _minCampaignTarget);
@@ -80,7 +70,8 @@ namespace Doloco.Pages
 
             Content = new ScrollView
             {
-                Content = layout
+                Content = layout,
+                Padding = new Thickness(10, 10, 10, 20)
             };
         }
     }

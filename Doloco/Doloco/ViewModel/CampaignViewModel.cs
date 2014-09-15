@@ -14,6 +14,7 @@ namespace Doloco.ViewModel
         private readonly INavigation _navigation;
         public IEnumerable DonationModel;
         public Campaign Model;
+        public User CamapignUser;
 
         public CampaignViewModel(INavigation navigation)
         {

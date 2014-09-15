@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="Doloco" android:installLocation="auto" android:versionCode="3" android:versionName="3">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="Doloco.Doloco" android:installLocation="auto" android:versionCode="2" android:versionName="2">
 	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="19" />
-	<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBStiVZouQan3DFwed08dZ6UqOjgzmFb5Q" />
-	<application android:label="Doloco" android:icon="@drawable/icon"></application>
+	<application android:label="Doloco" android:icon="@drawable/Icon">
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBStiVZouQan3DFwed08dZ6UqOjgzmFb5Q" />
+	</application>
 </manifest>

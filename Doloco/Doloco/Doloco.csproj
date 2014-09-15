@@ -38,11 +38,12 @@
     <Compile Include="App.cs" />
     <Compile Include="Helpers\Color.cs" />
     <Compile Include="Helpers\CurrencyConverter.cs" />
+    <Compile Include="Helpers\FullNameConverter.cs" />
+    <Compile Include="Helpers\ImageStreamValueConverter.cs" />
     <Compile Include="ILoginManager.cs" />
     <Compile Include="IMediaPicker.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Models\OptionItem.cs" />
-    <Compile Include="Pages\CampaignMapPage.cs" />
     <Compile Include="Pages\CreateCircleBankAccountPage.cs" />
     <Compile Include="Pages\CampaignPage.cs" />
     <Compile Include="Pages\CirclePage.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Pages\CirclesPage.cs" />
     <Compile Include="Views\StripedListView.cs" />
     <Compile Include="Views\StripedViewCell.cs" />
+    <Compile Include="Views\UserActionCell.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -102,6 +104,9 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\..\packages\Xamarin.Forms.1.2.2.6243\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="xBrainLab.Security.Cryptography">
+      <HintPath>..\..\..\..\..\Downloads\xBrainLab.Security.Cryptography.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
