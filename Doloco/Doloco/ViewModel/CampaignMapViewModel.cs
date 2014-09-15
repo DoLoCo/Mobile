@@ -20,35 +20,11 @@ namespace Doloco.ViewModel
             Icon = "Icon.png";
         }
 
-        public List<Pin> LoadPins(double latitude, double longitude)
+        public IEnumerable<Campaign> LoadPins(double latitude, double longitude)
         {
-            var pins = new List<Pin>();
-
             ExecuteLoadModelsCommand(latitude, longitude);
 
-            if (Campaigns == null || !Campaigns.Any()) return pins;
-
-            pins = Campaigns.Select(model =>
-            {
-                var campaign = (Campaign) model;
-                var organization = campaign.Organization;
-                if (organization.Lat != null && organization.Lng != null)
-                {
-                    var position = new Position((double) organization.Lat, (double) organization.Lng);
-                    var pin = new Pin
-                    {
-                        Type = PinType.Place,
-                        Position = position,
-                        Label = campaign.ToString(),
-                        Address = organization.AddressLine1.ToString()
-                    };
-                    return pin;
-                }
-
-                return null;
-            }).ToList();
-
-            return pins;
+            return Campaigns;
         }
 
         private async void ExecuteLoadModelsCommand(double lat, double lng)

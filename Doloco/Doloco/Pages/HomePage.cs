@@ -5,6 +5,7 @@ using System.Linq;
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
+using Doloco.Views;
 using DolocoApiClient.Models;
 using Doloco.ViewModel;
 using Xamarin.Forms;
@@ -21,7 +22,7 @@ namespace Doloco.Pages
         }
 
         IDictionary<Pin, Campaign> PinMap;
-        private Map _map;
+        private readonly ListView _campaignList;
         private readonly Distance _radius = Distance.FromMiles(0.3);
 
         public HomePage()
@@ -30,8 +31,6 @@ namespace Doloco.Pages
             BindingContext = viewModel;
 
             var stack = new StackLayout { Spacing = 0 };
-
-            var map = MakeMap();
 
             this.Title = "Nearby Campaigns";
 
@@ -47,60 +46,29 @@ namespace Doloco.Pages
                     return;
 
                 var position = positions.First();
-                var pins = ViewModel.LoadPins(position.Latitude, position.Longitude);
-                _map = PinnedMap(pins);
-                _map.MoveToRegion(MapSpan.FromCenterAndRadius(position,
-                    Distance.FromMiles(0.1)));
+                var campaigns = ViewModel.LoadPins(position.Latitude, position.Longitude);
+                _campaignList.ItemsSource = campaigns;
             };
             stack.Children.Add(searchAddress);
 
-            map.VerticalOptions = LayoutOptions.FillAndExpand;
-            map.HeightRequest = 100;
-            map.WidthRequest = 960;
+            var campaignItem = new DataTemplate(typeof (StripedViewCell));
+            campaignItem.SetBinding(TextCell.TextProperty, "Name");
+            campaignItem.SetBinding(TextCell.DetailProperty, "Description");
+            _campaignList = new StripedListView
+            {
+                ItemsSource = viewModel.LoadPins(App.UserLatitude, App.UserLongitude),
+                ItemTemplate = campaignItem
+            };
+            _campaignList.ItemSelected += async (sender, e) =>
+            {
+                var selectedCampaign = (Campaign) e.SelectedItem;
+                var campaignPage = new CampaignPage(selectedCampaign.Id, selectedCampaign.OrganizationId);
 
-            stack.Children.Add(map);
+                await Navigation.PushAsync(campaignPage);
+            };
+
+            stack.Children.Add(_campaignList);
             Content = stack;
-        }
-
-        public Map MakeMap()
-        {
-
-            var pins = ViewModel.LoadPins(App.UserLatitude, App.UserLongitude);
-
-            var map = PinnedMap(pins);
-
-/*            map. += (sender, args)=>
-            {
-                Debug.WriteLine(args.SelectedItem);
-/*                var pin = args.SelectedItem as Pin;
-                var details = PinMap[pin];
-/*                var page = new CampaignPage(details.);#2#
-                Navigation.PushAsync(page);#1#
-            };*/
-
-            return map;
-        }
-
-        private Map PinnedMap(IList<Pin> pins)
-        {
-            if (_map == null)
-                _map = new Map(MapSpan.FromCenterAndRadius(new Position(App.UserLatitude, App.UserLongitude), _radius));
-
-            if (pins == null || !pins.Any())
-            {
-                return _map;
-            }
-
-            var dict = pins.Zip(ViewModel.Campaigns, (p, m) => new KeyValuePair<Pin, Campaign>(p, m)).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
-            PinMap = dict;
-            _map = new Map(MapSpan.FromCenterAndRadius(pins[0].Position, _radius));
-
-            foreach (var p in pins)
-            {
-                _map.Pins.Add(p);
-            }
-
-            return _map;
         }
     }
 }
