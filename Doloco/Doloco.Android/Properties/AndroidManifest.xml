@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="Doloco.Doloco" android:installLocation="auto" android:versionCode="2" android:versionName="2">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" android:versionCode="2" android:versionName="2" package="com.doloco">
 	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="19" />
 	<application android:label="Doloco" android:icon="@drawable/Icon">
 		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyBStiVZouQan3DFwed08dZ6UqOjgzmFb5Q" />
