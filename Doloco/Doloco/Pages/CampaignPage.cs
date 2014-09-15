@@ -11,7 +11,6 @@ using Doloco.ViewModel;
 using Doloco.Views;
 using DolocoApiClient.Models;
 using Xamarin.Forms;
-using xBrainLab.Security.Cryptography;
 using Color = Xamarin.Forms.Color;
 
 namespace Doloco.Pages
@@ -70,23 +69,23 @@ namespace Doloco.Pages
             Content = stack;
         }
 
-        private static void _addDonationUserAvatars(CampaignViewModel viewModel)
+/*        private static void _addDonationUserAvatars(CampaignViewModel viewModel)
         {
             foreach (var donation in viewModel.DonationModel.Cast<Donation>())
             {
                 donation.User.Avatar = _getUserAvatarUrl(donation.User.Email);
             }
-        }
+        }*/
 
         private async Task<StackLayout> _createCampaignLayout(CampaignViewModel viewModel)
         {
-            var emailAvatar = _getUserAvatarUrl(viewModel.CamapignUser.Email);
+/*            var emailAvatar = _getUserAvatarUrl(viewModel.CamapignUser.Email);*/
             
             var fullName = string.Format("{0} {1}", viewModel.CamapignUser.FirstName, viewModel.CamapignUser.LastName);
             var createdStr = String.Format("Created {0}", viewModel.Model.CreatedAt.ToString("D"));
 
             var campaignCreatorCell = new DataTemplate(typeof(ImageCell));
-            campaignCreatorCell.SetValue(ImageCell.ImageSourceProperty, ImageSource.FromUri(new Uri(emailAvatar)));
+/*            campaignCreatorCell.SetValue(ImageCell.ImageSourceProperty, ImageSource.FromUri(new Uri(emailAvatar)));*/
             campaignCreatorCell.SetValue(TextCell.TextProperty, fullName);
             campaignCreatorCell.SetValue(TextCell.DetailProperty, createdStr);
             var campaignCreatorList = new List<CampaignViewModel>
@@ -156,11 +155,11 @@ namespace Doloco.Pages
             return campaignView;
         }
 
-        private static string _getUserAvatarUrl(string userEmail)
+/*        private static string _getUserAvatarUrl(string userEmail)
         {
             var emailHash = MD5.GetHashString(userEmail);
             return String.Format("http://www.gravatar.com/avatar/{0}?f=g",
                     emailHash);
-        }
+        }*/
     }
 }
