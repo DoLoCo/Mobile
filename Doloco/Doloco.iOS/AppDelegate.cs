@@ -21,13 +21,13 @@ namespace Doloco.iOS
 
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            UIButton.Appearance.TintColor = UIColor.LightGray;
-            UIButton.Appearance.SetTitleColor(UIColor.FromRGB(0, 127, 14), UIControlState.Normal);
-            UISlider.Appearance.ThumbTintColor = UIColor.Red;
-            UISlider.Appearance.MinimumTrackTintColor = UIColor.Orange;
-            UISlider.Appearance.MaximumTrackTintColor = UIColor.Yellow;
-            UIProgressView.Appearance.ProgressTintColor = UIColor.Yellow;
-            UIProgressView.Appearance.TrackTintColor = UIColor.Orange;
+
+            //Navigation Bar
+            UINavigationBar.Appearance.BarTintColor = UIColor.FromRGB(250, 105, 0);
+            UINavigationBar.Appearance.BackgroundColor = UIColor.FromRGB(250, 105, 0);
+            // Button
+            UIButton.Appearance.TintColor = UIColor.FromRGB(139, 200, 219);
+            UIButton.Appearance.SetTitleColor(UIColor.FromRGB(255, 255, 255), UIControlState.Normal);
 
             Forms.Init();
             FormsMaps.Init();
