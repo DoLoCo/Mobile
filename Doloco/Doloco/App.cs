@@ -30,7 +30,7 @@ namespace Doloco
 
         static App()
         {
-            ApiClient = new DolocoApiClient.DolocoApiClient(_appEnv["staging"]);
+            ApiClient = new DolocoApiClient.DolocoApiClient(_appEnv["live"]);
             Token = null;
 
 			TypeMap = new Dictionary<Type, Type> 
