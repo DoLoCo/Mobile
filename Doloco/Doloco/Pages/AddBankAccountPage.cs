@@ -10,34 +10,41 @@ namespace Doloco
 		public AddBankAccountPage ()
 		{
 			BindingContext = new AddAccountViewModel(Navigation);
-			var layout = new StackLayout();
 
-		    var accountType = new Picker() {Title = "Account Type"};
-            accountType.Items.Add("Checking");
-            accountType.Items.Add("Savings");
-			accountType.SetBinding(Picker.SelectedIndexProperty, AddAccountViewModel.AccountTypePropertyName);
-			layout.Children.Add(accountType);
+		    var addBankAccountUrl = String.Format("{0}/bank_account/new?token={1}", App.AppEnv[App.CurrentAppEnv], App.Token);
+            var addBankAccountView = new WebView
+            {
+                Source = new UrlWebViewSource
+                {
+                    Url = addBankAccountUrl,
+                },
+                VerticalOptions = LayoutOptions.FillAndExpand
+            };
 
-			var accountName = new Entry { Placeholder = "Account Name" };
-			accountName.SetBinding(Entry.TextProperty, AddAccountViewModel.AccountNamePropertyName);
-			layout.Children.Add(accountName);
-
-			var accountNumber = new Entry { Placeholder = "Account Number" };
-			accountNumber.SetBinding(Entry.TextProperty, AddAccountViewModel.AccountNumberPropertyName);
-			layout.Children.Add(accountNumber);
-
-			var routingNumber = new Entry { Placeholder = "Routing Number" };
-			routingNumber.SetBinding(Entry.TextProperty, AddAccountViewModel.RoutingNumberPropertyName);
-			layout.Children.Add(routingNumber);
-
-            var button = new Button { Text = "Add Account"};
-			button.SetBinding(Button.CommandProperty, AddAccountViewModel.AddCommandPropertyName);
-			layout.Children.Add (button);
-
-		    Content = new ScrollView
+		    var closeImage = new Image
 		    {
-		        Content = layout,
-                Padding = new Thickness(10, 10, 10, 20)
+                Source = ImageSource.FromUri(new Uri("https://s3.amazonaws.com/doloco_images/assets/cross66_64.png")),
+                Aspect = Aspect.AspectFit,
+                AnchorX = 0,
+                HorizontalOptions = LayoutOptions.End
+		    };
+
+            var tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += async (s, e) =>
+            {
+                await Navigation.PopModalAsync();
+            };
+		    closeImage.GestureRecognizers.Add(tapGestureRecognizer);
+
+		    this.BackgroundColor = Color.White;
+
+		    Content = new StackLayout
+		    {
+		        Children =
+		        {
+		            closeImage,
+		            addBankAccountView
+		        }
 		    };
 		}
 	}

@@ -1,8 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="Android.192.168.56.101:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Doloco\Doloco\App.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Doloco\Doloco.Android\MainActivity.cs">
     <Files>
-      <File FileName="Doloco\Doloco\App.cs" Line="11" Column="11" />
+      <File FileName="Doloco\Doloco\App.cs" Line="3" Column="3" />
+      <File FileName="Doloco\Doloco.Android\MainActivity.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

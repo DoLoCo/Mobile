@@ -55,24 +55,18 @@ namespace Doloco.Droid
         private String _locationProvider;
         private Location _currentLocation;
         private LocationManager _locationManager;
+	    private Criteria _locationServiceCriteria;
 
 	    public void InitializeLocationManager()
 	    {
             _locationManager = (LocationManager)GetSystemService(LocationService);
-            Criteria criteriaForLocationService = new Criteria
+            _locationServiceCriteria = new Criteria
             {
                 Accuracy = Accuracy.Fine
             };
-            IList<string> acceptableLocationProviders = _locationManager.GetProviders(criteriaForLocationService, true);
+            IList<string> acceptableLocationProviders = _locationManager.GetProviders(_locationServiceCriteria, true);
 
-            if (acceptableLocationProviders.Any())
-            {
-                _locationProvider = acceptableLocationProviders.First();
-            }
-            else
-            {
-                _locationProvider = String.Empty;
-            }
+            _locationProvider = acceptableLocationProviders.Any() ? acceptableLocationProviders.First() : String.Empty;
 	    }
 
         public void OnProviderDisabled(string provider) { }
@@ -84,7 +78,11 @@ namespace Doloco.Droid
         protected override void OnResume()
         {
             base.OnResume();
-            _locationManager.RequestLocationUpdates(_locationProvider, 0, 0, this);
+            if (_locationManager.GetProviders(_locationServiceCriteria, true).Contains(LocationManager.GpsProvider))
+                _locationManager.RequestLocationUpdates(LocationManager.GpsProvider, 0, 0, this);
+
+            if (_locationManager.GetProviders(_locationServiceCriteria, true).Contains(LocationManager.NetworkProvider))
+                _locationManager.RequestLocationUpdates(LocationManager.NetworkProvider, 0, 0, this);
         }
 
         protected override void OnPause()

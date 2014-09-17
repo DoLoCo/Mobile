@@ -34,7 +34,7 @@ namespace Doloco
             };
             addButton.Clicked += async (sender, e) =>
             {
-                await Navigation.PushAsync(new AddBankAccountPage());
+                await Navigation.PushModalAsync(new AddBankAccountPage());
             };
 
             layout.Children.Add(addButton);
