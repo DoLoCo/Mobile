@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Helpers\BankAccountStatusIconConverter.cs" />
     <Compile Include="Helpers\Color.cs" />
     <Compile Include="Helpers\CurrencyConverter.cs" />
     <Compile Include="Helpers\FullNameConverter.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Pages\MenuPage.cs" />
     <Compile Include="Pages\RootPage.cs" />
     <Compile Include="Pages\SettingsPage.cs" />
+    <Compile Include="Pages\VerifyBankPage.cs" />
     <Compile Include="ViewModel\AddCircleAccountViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="ViewModel\CreateCircleViewModel.cs" />
     <Compile Include="ViewModel\DonateModalViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="ViewModel\VerifyBankViewModel.cs" />
     <Compile Include="Views\ListTextCell.cs" />
     <Compile Include="Views\DarkTextCell.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />

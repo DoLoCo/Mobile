@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Doloco.Helpers;
+using Doloco.Pages;
 using Doloco.Views;
+using DolocoApiClient.Models;
 using Xamarin.Forms;
 using Doloco.ViewModel;
 using Doloco.Models;
@@ -50,10 +53,19 @@ namespace Doloco
 	        }
 
             var cell = new DataTemplate(typeof(ListTextCell));
+            cell.SetBinding(ImageCell.ImageSourceProperty, new Binding("Status") { Converter = new BankAccountStatusIconConverter() });
             cell.SetBinding(TextCell.TextProperty, "BankAccountName");
             cell.SetBinding(TextCell.DetailProperty, "LastFour");
 
             var list = new ListView { ItemsSource = viewModel.Model, ItemTemplate = cell };
+	        list.ItemSelected += async (sender, e) =>
+	        {
+                var selectedAccount = (BankAccount)e.SelectedItem;
+	            if (selectedAccount.Status == "Verified") return;
+
+	            var verifyPage = new VerifyBankPage(selectedAccount.Id);
+	            await Navigation.PushAsync(verifyPage);
+	        };
             layout.Children.Add(list);
 
             Content = layout;

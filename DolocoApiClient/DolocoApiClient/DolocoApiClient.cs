@@ -41,6 +41,7 @@ namespace DolocoApiClient
                 {DolocoApiRouteEnum.OrganizationCampaigns, "/organizations/{0}/campaigns"},
                 {DolocoApiRouteEnum.OrganizationCampaign, "/organizations/{0}/campaigns/{1}"},
                 {DolocoApiRouteEnum.OrganizationCampaignDonations, "/organizations/{0}/campaigns/{1}/donations"},
+                {DolocoApiRouteEnum.BankAccountVerify, "/bank_accounts/{0}/verifications"},
                 {DolocoApiRouteEnum.Campaigns, "/campaigns"},
                 {DolocoApiRouteEnum.Campaign, "/campaigns/{0}"}
             };

@@ -643,6 +643,10 @@
     <AndroidResource Include="Resources\Drawable\tab_indicator_ab_doloco.xml" />
     <AndroidResource Include="Resources\Drawable\splash.png" />
     <AndroidResource Include="Resources\Drawable\cross66.png" />
+    <AndroidResource Include="Resources\Drawable\bank10.png" />
+    <AndroidResource Include="Resources\Drawable\credit50.png" />
+    <AndroidResource Include="Resources\Drawable\disconnected.png" />
+    <AndroidResource Include="Resources\Drawable\verified.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml">

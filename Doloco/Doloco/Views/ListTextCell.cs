@@ -7,5 +7,5 @@ using System.Linq;
 
 namespace Doloco.Views
 {
-    public class ListTextCell : TextCell { }
+    public class ListTextCell : ImageCell { }
 }

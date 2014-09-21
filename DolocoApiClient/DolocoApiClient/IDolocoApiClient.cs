@@ -34,6 +34,8 @@ namespace DolocoApiClient
 
 	    Task<Donation> CreateOrganizationCampaignDonationAsync(int organizationId, int campaignId, string amount,
 	        int bankAccountId);
+
+	    Task VerifyBankAccountAsync(int bankAccountId, decimal amount1, decimal amount2);
 	}
 }
 

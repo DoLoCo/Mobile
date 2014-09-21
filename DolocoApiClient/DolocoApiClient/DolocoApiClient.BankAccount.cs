@@ -59,5 +59,17 @@ namespace DolocoApiClient
 
             return _client.DeleteAsync<BankAccount>(bankAccountUrl).Process();
         }
+
+        public Task VerifyBankAccountAsync(int bankAccountId, decimal amount1, decimal amount2)
+        {
+            var verifyAccountUrl = String.Format(GetRoutePathUrl(DolocoApiRouteEnum.BankAccountVerify), bankAccountId);
+            var verifyPayload = new Dictionary<string, decimal>
+            {
+                {"amount1", amount1},
+                {"amount2", amount2}
+            };
+
+            return _client.PostAsync<EmptyPayload>(verifyAccountUrl, verifyPayload).Process();
+        }
     }
 }

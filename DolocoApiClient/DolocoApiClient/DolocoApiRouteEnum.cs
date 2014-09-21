@@ -20,6 +20,7 @@ namespace DolocoApiClient
         OrganizationCampaigns,
         OrganizationCampaign,
         OrganizationCampaignDonations,
+        BankAccountVerify,
         Campaigns,
         Campaign
     }
