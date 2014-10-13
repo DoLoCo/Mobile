@@ -27,6 +27,8 @@ namespace Doloco.Droid
 		public static void UpdateIdValues()
 		{
 			global::Mindscape.Raygun4Net.Xamarin.Android.Resource.String.library_name = global::Doloco.Droid.Resource.String.library_name;
+			global::Xamarin.InsightsCore.Resource.String.ApplicationName = global::Doloco.Droid.Resource.String.ApplicationName;
+			global::Xamarin.InsightsCore.Resource.String.Hello = global::Doloco.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Animation
@@ -1874,6 +1876,12 @@ namespace Doloco.Droid
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f05002f
+			public const int ApplicationName = 2131034159;
+			
+			// aapt resource value: 0x7f05002e
+			public const int Hello = 2131034158;
+			
 			// aapt resource value: 0x7f050007
 			public const int abc_action_bar_home_description = 2131034119;
 			
@@ -1991,8 +1999,8 @@ namespace Doloco.Droid
 			// aapt resource value: 0x7f050026
 			public const int common_signin_button_text_long = 2131034150;
 			
-			// aapt resource value: 0x7f05002e
-			public const int library_name = 2131034158;
+			// aapt resource value: 0x7f050030
+			public const int library_name = 2131034160;
 			
 			// aapt resource value: 0x7f05002d
 			public const int location_client_powered_by_google = 2131034157;
