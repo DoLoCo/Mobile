@@ -30,6 +30,7 @@ namespace Doloco.Droid
 		{
 			base.OnCreate (bundle);
             RaygunClient.Attach("i27YVEgFvRzBI8gZoIeMkg==");
+            Insights.Initialize("51510da232ff2d483adb7ab222033e6bb9f4b3eb", Application.Context);
 			Forms.Init (this, bundle);
             FormsMaps.Init(this, bundle);
 
