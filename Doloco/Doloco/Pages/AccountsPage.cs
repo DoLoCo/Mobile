@@ -41,7 +41,7 @@ namespace Doloco
                 page.DisplayAlert("Error", ex.Message, "OK", "Cancel");
 	        }
 
-            var cell = new DataTemplate(typeof(ListTextCell));
+            var cell = new DataTemplate(typeof(MenuTextCell));
             cell.SetBinding(ImageCell.ImageSourceProperty, new Binding("Status") { Converter = new BankAccountStatusIconConverter() });
             cell.SetBinding(TextCell.TextProperty, "BankAccountName");
             cell.SetBinding(TextCell.DetailProperty, "LastFour");

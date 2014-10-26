@@ -91,9 +91,13 @@
     <Reference Include="Xamarin.Forms.Maps">
       <HintPath>..\..\packages\Xamarin.Forms.Maps.1.2.2.6243\lib\MonoAndroid10\Xamarin.Forms.Maps.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Insights">
+      <HintPath>..\..\packages\Xamarin.Insights.1.7.2.97\lib\MonoAndroid10\Xamarin.Insights.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\UserActionCellRenderer.cs" />
     <Compile Include="Renderers\MenuTextCellRenderer.cs" />
     <Compile Include="Renderers\DarkTextCellRenderer.cs" />
     <Compile Include="Renderers\ListTextCellRenderer.cs" />

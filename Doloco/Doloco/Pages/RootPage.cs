@@ -52,6 +52,12 @@ namespace Doloco.Pages
                     return new CirclesPage();
                 case "Payment Info":
                     return new AccountsPage();
+                case "Privacy":
+                    return new ExternalWebPage("http://doloco.org/policy.html");
+                case "Terms":
+                    return new ExternalWebPage("http://doloco.org/policy.html");
+                case "About Us":
+                    return new ExternalWebPage("http://doloco.org");
                 default:
                     throw new NotImplementedException("Unknown menu option: " + option.Title);
             }
