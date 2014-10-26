@@ -59,11 +59,13 @@ namespace Doloco.ViewModel
             }
         }
 
+        public Double CampaignTargetAmmount { get; set; }
+
         protected async Task ExecuteAddCommand()
         {
             try
             {
-                await App.ApiClient.CreateOrganizationCampaignAsync(_orgId, _campaignName, _campaignDescription, _campaignTarget, _campaignTargetDate);
+                await App.ApiClient.CreateOrganizationCampaignAsync(_orgId, _campaignName, _campaignDescription, CampaignTargetAmmount.ToString(), _campaignTargetDate);
 
                 await _navigation.PopAsync();
             }
