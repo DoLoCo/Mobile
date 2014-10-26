@@ -31,7 +31,7 @@ namespace Doloco
 
             var layout = new StackLayout();
 
-            var addButton = new Button
+            var addButton = new DefaultButton
             {
                 Text = "Add Account"
             };

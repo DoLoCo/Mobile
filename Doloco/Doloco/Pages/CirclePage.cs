@@ -56,7 +56,7 @@ namespace Doloco.Pages
                 TextColor = Color.White
             };
 
-            var button = new Button
+            var button = new DefaultButton
             {
                 Text = "Add Campaign"
             };

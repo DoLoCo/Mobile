@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Doloco.ViewModel;
+using Doloco.Views;
 using Xamarin.Forms;
 
 namespace Doloco.Pages
@@ -25,7 +26,7 @@ namespace Doloco.Pages
             amountTwo.SetBinding(Entry.TextProperty, VerifyBankViewModel.AmountTwoPropertyName);
             layout.Children.Add(amountTwo);
 
-            var verifyButton = new Button
+            var verifyButton = new DefaultButton
             {
                 Text = "Verify"
             };

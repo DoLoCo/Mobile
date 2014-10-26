@@ -39,7 +39,7 @@ namespace Doloco.Pages
                 page.DisplayAlert("Error", ex.Message, "OK", "Cancel");
             }
 
-            var createButton = new Button
+            var createButton = new DefaultButton
             {
                 Text = "Create Circle"
             };

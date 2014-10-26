@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Doloco.ViewModel;
+using Doloco.Views;
 using DolocoApiClient.Models;
 using Xamarin.Forms;
 
@@ -77,7 +78,7 @@ namespace Doloco.Pages
             };
             layout.Children.Add(digicertSeal);
 
-            var button = new Button
+            var button = new DefaultButton
             {
                 Text = "Donate"
             };

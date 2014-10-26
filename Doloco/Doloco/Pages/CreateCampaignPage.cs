@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Doloco.ViewModel;
+using Doloco.Views;
 using Xamarin.Forms;
 
 namespace Doloco.Pages
@@ -28,7 +29,8 @@ namespace Doloco.Pages
 
             var targetDateLabel = new Label
             {
-                Text = "Target Date"
+                Text = "Target Date",
+                HorizontalOptions = LayoutOptions.Center
             };
 
             var campaignTargetDate = new DatePicker
@@ -37,7 +39,7 @@ namespace Doloco.Pages
             };
             campaignTargetDate.SetBinding(DatePicker.DateProperty, CreateCampaignViewModel.CampaignTargetDatePropertyName);
 
-            var targetLabel = new Label { Text = "Target Amount" };
+            var targetLabel = new Label { Text = "Target Amount", HorizontalOptions = LayoutOptions.Center};
             _campaignTargetLabel = new Label
             {
                 Text = String.Format("{0}", _minCampaignTarget.ToString("C", CultureInfo.CurrentCulture)),
@@ -57,12 +59,10 @@ namespace Doloco.Pages
                 viewModel.CampaignTargetAmmount = e.NewValue;
             };
 
-            var button = new Button
+            var button = new DefaultButton
             {
                 Text = "Create Campaign",
-                BackgroundColor = Color.FromHex("4f81bc"),
-                BorderColor = Color.Transparent,
-                TextColor = Color.White
+                VerticalOptions = LayoutOptions.End
             };
             button.SetBinding(Button.CommandProperty, CreateCampaignViewModel.AddCommandPropertyName);
 
@@ -83,8 +83,7 @@ namespace Doloco.Pages
 
             Content = new ScrollView
             {
-                Content = layout,
-                Padding = new Thickness(10, 10, 10, 20)
+                Content = layout
             };
         }
     }

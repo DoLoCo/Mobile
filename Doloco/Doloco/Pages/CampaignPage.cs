@@ -111,7 +111,7 @@ namespace Doloco.Pages
                 campaignProgressBar.SetValue(ProgressBar.ProgressProperty, campaignProgress);
             }
 
-            var donateButton = new Button
+            var donateButton = new DefaultButton
             {
                 Text = "Donate Now!"
             };

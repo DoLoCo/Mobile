@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Doloco.ViewModel;
+using Doloco.Views;
 using Xamarin.Forms;
 
 namespace Doloco.Pages
@@ -17,7 +18,7 @@ namespace Doloco.Pages
 
             var layout = new StackLayout();
 
-            var organizationName = new Entry { Placeholder = "Name" };
+            var organizationName = new Entry { Placeholder = "Circle Name" };
             organizationName.SetBinding(Entry.TextProperty, CreateCircleViewModel.OrganizationNamePropertyName);
             layout.Children.Add(organizationName);
 
@@ -45,14 +46,16 @@ namespace Doloco.Pages
             postalCode.SetBinding(Entry.TextProperty, CreateCircleViewModel.PostalCodePropertyName);
             layout.Children.Add(postalCode);
 
-            var button = new Button { Text = "Next" };
+            var button = new DefaultButton
+            {
+                Text = "Next"
+            };
             button.SetBinding(Button.CommandProperty, CreateCircleViewModel.AddCommandPropertyName);
             layout.Children.Add(button);
 
             Content = new ScrollView
             {
-                Content = layout,
-                Padding = new Thickness(10, 10, 10, 20)
+                Content = layout
             };
         }
     }

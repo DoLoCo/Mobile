@@ -71,6 +71,7 @@
     <Compile Include="ViewModel\DonateModalViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\VerifyBankViewModel.cs" />
+    <Compile Include="Views\DefaultButton.cs" />
     <Compile Include="Views\MenuTextCell.cs" />
     <Compile Include="Views\ListTextCell.cs" />
     <Compile Include="Views\DarkTextCell.cs" />
