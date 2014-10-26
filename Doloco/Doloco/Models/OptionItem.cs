@@ -36,14 +36,66 @@ namespace Doloco.Models
 	public class SettingsOptionItem : OptionItem {
 		public override string Title
 		{
-			get { return "Settings"; }
+			get { return "Payment Info"; }
 		}
 
 		public override string Icon
 		{
-			get { return "tools3.png"; }
+			get { return "bank.png"; }
 		}
 	}
+
+    public class PrivacyOptionItem : OptionItem
+    {
+        public override string Title
+        {
+            get { return "Privacy"; }
+        }
+
+        public override string Icon
+        {
+            get { return "privacy.png"; }
+        }
+    }
+
+    public class TermsOptionItem : OptionItem
+    {
+        public override string Title
+        {
+            get { return "Terms"; }
+        }
+
+        public override string Icon
+        {
+            get { return "terms.png"; }
+        }
+    }
+
+    public class FeedbackOptionItem : OptionItem
+    {
+        public override string Title
+        {
+            get { return "Send Feed Back"; }
+        }
+
+        public override string Icon
+        {
+            get { return "feedback.png"; }
+        }
+    }
+
+    public class AboutOptionItem : OptionItem
+    {
+        public override string Title
+        {
+            get { return "About Us"; }
+        }
+
+        public override string Icon
+        {
+            get { return "about.png"; }
+        }
+    }
 
     public class OptionItem
     {

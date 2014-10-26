@@ -18,6 +18,7 @@ namespace Doloco
 	    public static double UserLatitude;
         public static double UserLongitude;
 	    public static readonly IDolocoApiClient ApiClient;
+	    public static User CurrentUser;
 	    public static string Token;
         internal static IDictionary<Type, Type> TypeMap;
         internal static readonly MethodInfo GetDependency;

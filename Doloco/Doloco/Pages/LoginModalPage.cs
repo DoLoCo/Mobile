@@ -17,7 +17,7 @@ namespace Doloco.Pages
             create = new CreateAccountPage(ilm);
             this.Children.Add(login);
             this.Children.Add(create);
-            this.BackgroundColor = Helpers.Color.FromHex(0xfa6a00).ToFormsColor();
+            this.BackgroundColor = Helpers.Color.FromHex(0xf79748).ToFormsColor();
 
             MessagingCenter.Subscribe<ContentPage>(this, "Login", (sender) => {
                                                                                   this.SelectedItem = login;

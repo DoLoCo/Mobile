@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Doloco.Views;
 using Xamarin.Forms;
 
 namespace Doloco.Pages
@@ -17,7 +18,14 @@ namespace Doloco.Pages
 
         public CreateAccountPage(ILoginManager ilm)
         {
-            var button = new Button { Text = "Create Account" };
+            var button = new Button
+            {
+                Text = "Create Account",
+                BackgroundColor = Color.FromHex("4f81bc"),
+                BorderColor = Color.Transparent,
+                TextColor = Color.White,
+                BorderRadius = 20
+            };
             button.Clicked += async (sender, e) =>
             {
                 if (String.IsNullOrEmpty(email.Text) || String.IsNullOrEmpty(password.Text) 
@@ -46,14 +54,52 @@ namespace Doloco.Pages
                 }
 
             };
-            var cancel = new Button { Text = "Cancel" };
+            var cancel = new Button
+            {
+                Text = "Cancel",
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+                BorderColor = Color.Transparent
+            };
             cancel.Clicked += (sender, e) => MessagingCenter.Send<ContentPage>(this, "Login");
 
-            email = new Entry { Text = "", Placeholder = "Email"};
-            firstName = new Entry { Text = "", Placeholder = "First Name"};
-            lastName = new Entry { Text = "", Placeholder = "Last Name"};
-            password = new Entry { Text = "", Placeholder = "Password", IsPassword = true};
-            passwordConfirm = new Entry { Text = "", Placeholder = "Re-enter Password", IsPassword = true };
+            email = new RoundedEntry
+            {
+                Text = "", 
+                Placeholder = "Email",
+                TextColor = Color.White,
+                BackgroundColor = Color.Transparent
+            };
+            firstName = new RoundedEntry
+            {
+                Text = "",
+                Placeholder = "First Name",
+                TextColor = Color.White,
+                BackgroundColor = Color.Transparent
+            };
+            lastName = new RoundedEntry
+            {
+                Text = "", 
+                Placeholder = "Last Name",
+                TextColor = Color.White,
+                BackgroundColor = Color.Transparent
+            };
+            password = new RoundedEntry
+            {
+                Text = "", 
+                Placeholder = "Password", 
+                IsPassword = true,
+                TextColor = Color.White,
+                BackgroundColor = Color.Transparent
+            };
+            passwordConfirm = new RoundedEntry
+            {
+                Text = "", 
+                Placeholder = "Re-enter Password", 
+                IsPassword = true,
+                TextColor = Color.White,
+                BackgroundColor = Color.Transparent
+            };
             Content = new ScrollView
             {
                 Content = new StackLayout
@@ -61,7 +107,6 @@ namespace Doloco.Pages
                     Padding = new Thickness(10, 40, 10, 10),
                     Children =
                     {
-                        new Label {Text = "Create Account", Font = Font.SystemFontOfSize(NamedSize.Large)},
                         email,
                         firstName,
                         lastName,
