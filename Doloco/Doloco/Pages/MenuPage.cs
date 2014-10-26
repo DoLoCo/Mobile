@@ -37,15 +37,15 @@ namespace Doloco.Pages
             var profileImgUrl = App.CurrentUser.Avatar == "" ? defaultImgUrl : App.CurrentUser.Avatar;
             var photo = new Image
             {
-                WidthRequest = 180,
-                HeightRequest = 180,
+                WidthRequest = 150,
+                HeightRequest = 150,
                 Source = profileImgUrl
             };
             var mask = new Image
             {
                 Source = "roundmask.png",
-                WidthRequest = 200,
-                HeightRequest = 200,
+                WidthRequest = 150,
+                HeightRequest = 150,
             };
             var photoGrid = new Grid
             {
