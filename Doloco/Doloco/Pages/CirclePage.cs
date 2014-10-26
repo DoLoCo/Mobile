@@ -56,15 +56,7 @@ namespace Doloco.Pages
                 TextColor = Color.White
             };
 
-            var button = new Button
-            {
-                Text = "Add Campaign"
-            };
-            button.Clicked += async (sender, e) =>
-            {
-                var createCampaignPage = new CreateCampaignPage(_circleId);
-                await Navigation.PushAsync(createCampaignPage);
-            };
+
             var cirleDetailView = new StackLayout
             {
                 BackgroundColor = Helpers.Color.DarkGray.ToFormsColor(),
@@ -72,8 +64,7 @@ namespace Doloco.Pages
                 Children =
                 {
                     headerLabel,
-                    descLabel,
-                    button
+                    descLabel
                 }
             };
 
@@ -92,6 +83,18 @@ namespace Doloco.Pages
                 await Navigation.PushAsync(campaignPage);
             };
             stack.Children.Add(list);
+
+            var button = new DefaultButton
+            {
+                Text = "Add Campaign"
+            };
+            button.Clicked += async (sender, e) =>
+            {
+                var createCampaignPage = new CreateCampaignPage(_circleId);
+                await Navigation.PushAsync(createCampaignPage);
+            };
+
+            stack.Children.Add(button);
 
             Content = stack;
         }

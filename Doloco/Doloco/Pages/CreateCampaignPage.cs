@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Doloco.ViewModel;
+using Doloco.Views;
 using Xamarin.Forms;
 
 namespace Doloco.Pages
@@ -20,58 +21,69 @@ namespace Doloco.Pages
             var viewModel = new CreateCampaignViewModel(Navigation, orgId);
             BindingContext = viewModel;
 
-            var layout = new StackLayout();
-
-            var campaignName = new Entry{ Placeholder = "Name" };
+            var campaignName = new Entry{ Placeholder = "Campaign Name" };
             campaignName.SetBinding(Entry.TextProperty, CreateCampaignViewModel.CampaignNamePropertyName);
-            layout.Children.Add(campaignName);
 
-            var campaignDescription = new Entry {Placeholder = "Description"};
+            var campaignDescription = new Entry{Placeholder = "Description"};
             campaignDescription.SetBinding(Entry.TextProperty, CreateCampaignViewModel.CampaignDescriptionPropertyName);
-            layout.Children.Add(campaignDescription);
-
-            _campaignTargetLabel = new Label
-            {
-                Text = String.Format("Target Amount {0}", _minCampaignTarget.ToString("C", CultureInfo.CurrentCulture))
-            };
-            layout.Children.Add(_campaignTargetLabel);
-
-            var campaignTarget = new Stepper
-            {
-                Maximum = 5000,
-                Minimum = _minCampaignTarget,
-                Increment = 0.5,
-                HorizontalOptions = LayoutOptions.Center
-            };
-            campaignTarget.SetBinding(Stepper.ValueProperty, CreateCampaignViewModel.CampaignTargetPropertyName);
-            campaignTarget.SetValue(Stepper.ValueProperty, _minCampaignTarget);
-            campaignTarget.ValueChanged += async (sender, e) =>
-            {
-                _campaignTargetLabel.Text = String.Format("Target Amount {0}", e.NewValue.ToString("C", CultureInfo.CurrentCulture));
-            };
-            layout.Children.Add(campaignTarget);
 
             var targetDateLabel = new Label
             {
-                Text = "Campaign Target Date"
+                Text = "Target Date",
+                HorizontalOptions = LayoutOptions.Center
             };
-            layout.Children.Add(targetDateLabel);
 
             var campaignTargetDate = new DatePicker
             {
                 Format = "D"
             };
             campaignTargetDate.SetBinding(DatePicker.DateProperty, CreateCampaignViewModel.CampaignTargetDatePropertyName);
-            layout.Children.Add(campaignTargetDate);
 
-            var button = new Button { Text = "Create Campaign" };
-            button.SetBinding(Button.CommandProperty, CreateCircleViewModel.AddCommandPropertyName);
-            layout.Children.Add(button);
+            var targetLabel = new Label { Text = "Target Amount", HorizontalOptions = LayoutOptions.Center};
+            _campaignTargetLabel = new Label
+            {
+                Text = String.Format("{0}", _minCampaignTarget.ToString("C", CultureInfo.CurrentCulture)),
+                TextColor = Color.FromHex("f79848"),
+                Font = Font.SystemFontOfSize(50, FontAttributes.Bold),
+                HorizontalOptions = LayoutOptions.Center
+            };
+
+            var campaignTarget = new Slider
+            {
+                Maximum = 5000,
+                Minimum = _minCampaignTarget
+            };
+            campaignTarget.ValueChanged += async (sender, e) =>
+            {
+                _campaignTargetLabel.Text = String.Format("{0}", e.NewValue.ToString("C", CultureInfo.CurrentCulture));
+                viewModel.CampaignTargetAmmount = e.NewValue;
+            };
+
+            var button = new DefaultButton
+            {
+                Text = "Create Campaign",
+                VerticalOptions = LayoutOptions.End
+            };
+            button.SetBinding(Button.CommandProperty, CreateCampaignViewModel.AddCommandPropertyName);
+
+            var layout = new StackLayout
+            {
+                Children =
+                {
+                    campaignName,
+                    campaignDescription,
+                    targetDateLabel,
+                    campaignTargetDate,
+                    targetLabel,
+                    _campaignTargetLabel,
+                    campaignTarget,
+                    button
+                }
+            };
 
             Content = new ScrollView
             {
-                Content = layout,
-                Padding = new Thickness(10, 10, 10, 20)
+                Content = layout
             };
         }
     }

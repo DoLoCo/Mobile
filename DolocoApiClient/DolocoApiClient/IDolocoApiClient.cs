@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using DolocoApiClient.Models;
+using DolocoApiClient.Payloads;
 
 namespace DolocoApiClient
 {
@@ -10,7 +11,7 @@ namespace DolocoApiClient
         string TestCreateSession();
         Task<string> RegisterUserAsync(string email, string firsName, string lastName, string password,
             string passwordConfirmation);
-	    Task<string> CreateSessionAsync(string email, string password);
+        Task<Dictionary<string, object>> CreateSessionAsync(string email, string password);
 		Task<IEnumerable<Organization>> GetMyOrganizationsAsync ();
         Task<Organization> GetOrganizationAsync(int organizationId);
 	    Task<Organization> CreateOrganizationAsync(string name, string phoneNumber, string description, string address,

@@ -50,8 +50,8 @@ namespace Doloco.Pages
                     return new HomePage();
                 case "Circles":
                     return new CirclesPage();
-                case "Settings":
-                    return new SettingsPage ();
+                case "Payment Info":
+                    return new AccountsPage();
                 default:
                     throw new NotImplementedException("Unknown menu option: " + option.Title);
             }

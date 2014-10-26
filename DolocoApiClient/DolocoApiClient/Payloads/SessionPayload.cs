@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace DolocoApiClient.Payloads
 {
-    internal class SessionPayload
+    public class SessionPayload
     {
         [JsonProperty("user")]
         public string User { get; set; }

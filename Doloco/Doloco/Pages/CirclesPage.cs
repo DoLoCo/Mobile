@@ -39,19 +39,6 @@ namespace Doloco.Pages
                 page.DisplayAlert("Error", ex.Message, "OK", "Cancel");
             }
 
-            var createButton = new Button
-            {
-                Text = "Create Circle"
-            };
-
-            createButton.Clicked += async (sender, e) =>
-            {
-                var createCirclePage = new CreateCircleDetailPage();
-                await Navigation.PushAsync(createCirclePage);
-            };
-
-            stack.Children.Add(createButton);
-
             var cell = new DataTemplate(typeof(ListTextCell));
             cell.SetBinding(TextCell.TextProperty, "Name");
             cell.SetBinding(TextCell.DetailProperty, "Description");
@@ -65,6 +52,19 @@ namespace Doloco.Pages
                 await Navigation.PushAsync(circlePage);
             };
             stack.Children.Add(list);
+
+            var createButton = new DefaultButton
+            {
+                Text = "Create Circle"
+            };
+
+            createButton.Clicked += async (sender, e) =>
+            {
+                var createCirclePage = new CreateCircleDetailPage();
+                await Navigation.PushAsync(createCirclePage);
+            };
+
+            stack.Children.Add(createButton);
 
             Content = stack;
         }

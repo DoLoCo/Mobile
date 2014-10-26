@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using Doloco.ViewModel;
+using Doloco.Views;
+using DolocoApiClient.Models;
 using Xamarin.Forms;
 
 namespace Doloco.Pages
@@ -15,7 +18,14 @@ namespace Doloco.Pages
 
         public LoginPage(ILoginManager ilm)
         {
-            var button = new Button { Text = "Login" };
+            var button = new Button
+            {
+                Text = "Login",
+                BackgroundColor = Color.FromHex("4f81bc"),
+                BorderColor = Color.Transparent,
+                TextColor = Color.White,
+                BorderRadius = 20
+            };
             button.Clicked += async (sender, e) =>
             {
                 if (String.IsNullOrEmpty(email.Text) || String.IsNullOrEmpty(password.Text))
@@ -27,9 +37,15 @@ namespace Doloco.Pages
                     try
                     {
 
-                        var token = await App.ApiClient.CreateSessionAsync(email.Text, password.Text);
+                        var payload = await App.ApiClient.CreateSessionAsync(email.Text, password.Text);
 
-                        App.Token = token;
+                        object token;
+                        object user;
+                        payload.TryGetValue("Token", out token);
+                        payload.TryGetValue("User", out user);
+
+                        App.Token = (string) token;
+                        App.CurrentUser = (User) user;
 
                         ilm.ShowMainPage();
                     }
@@ -40,7 +56,13 @@ namespace Doloco.Pages
                     }
                 }
             };
-            var create = new Button { Text = "Create Account" };
+            var create = new Button
+            {
+                Text = "Register",
+                BackgroundColor = Color.Transparent,
+                TextColor = Color.White,
+                BorderColor = Color.Transparent
+            };
             create.Clicked += (sender, e) => MessagingCenter.Send<ContentPage>(this, "Create");
 
             var logoImage = new Image
@@ -50,8 +72,21 @@ namespace Doloco.Pages
                 Source = ImageSource.FromFile("splash.png")
             };
 
-            email = new Entry { Text = "", Placeholder = "Email"};
-            password = new Entry { Text = "", Placeholder = "Password", IsPassword = true};
+            email = new RoundedEntry
+            {
+                Text = "", 
+                Placeholder = "Email Address",
+                TextColor = Color.White,
+                BackgroundColor = Color.Transparent
+            };
+            password = new RoundedEntry
+            {
+                Text = "", 
+                Placeholder = "Password", 
+                IsPassword = true,
+                TextColor = Color.White,
+                BackgroundColor = Color.Transparent
+            };
             Content = new ScrollView
             {
                 Content = new StackLayout
@@ -65,7 +100,7 @@ namespace Doloco.Pages
                         button,
                         create
                     },
-                    BackgroundColor = Helpers.Color.FromHex(0xfa6a00).ToFormsColor()
+                    BackgroundColor = Helpers.Color.FromHex(0xf79748).ToFormsColor()
                 }
             };
         }

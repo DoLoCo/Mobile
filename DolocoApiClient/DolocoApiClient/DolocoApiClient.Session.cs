@@ -20,7 +20,7 @@ namespace DolocoApiClient
             return "hello world";
         }
 
-        public Task<string> CreateSessionAsync(string email, string password)
+        public Task<Dictionary<string, object>> CreateSessionAsync(string email, string password)
         {
             var createSessionPath = GetRoutePathUrl(DolocoApiRouteEnum.Session);
             var postPayload = new Dictionary<string, string>
@@ -33,7 +33,14 @@ namespace DolocoApiClient
 				Token = payload.Token;
 				_client.SetToken(Token);
 
-				return payload.Token;
+			  var user = JsonConvert.DeserializeObject<User>(payload.User);
+              var newPayload = new Dictionary<string, object>{
+			        {"Token",payload.Token},
+			        {"User", user}
+			   };
+
+
+				return newPayload;
 			});
         }
     }

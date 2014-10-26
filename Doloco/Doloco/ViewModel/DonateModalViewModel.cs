@@ -51,6 +51,8 @@ namespace Doloco.ViewModel
             }
         }
 
+        public double DonationAmount { get; set; }
+
         protected async Task ExecuteDonateCommand()
         {
             BankAccount selectedAccount;
@@ -60,7 +62,7 @@ namespace Doloco.ViewModel
             {
                 await
                     App.ApiClient.CreateOrganizationCampaignDonationAsync(_organizationId, _campaignId,
-                        _amount, selectedAccount.Id);
+                        DonationAmount.ToString(), selectedAccount.Id);
 
                 await _navigation.PopAsync();
             }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Doloco.ViewModel;
+using Doloco.Views;
 using DolocoApiClient.Models;
 using Xamarin.Forms;
 
@@ -30,32 +31,30 @@ namespace Doloco.Pages
             var viewModel = new DonateModalViewModel(Navigation, _orgId, _campaignId, bankAccountDictionary);
             BindingContext = viewModel;
 
-            var layout = new StackLayout {Padding = 10};
+            var layout = new StackLayout();
 
             this.Title = "Donate";
 
             _amountLabel = new Label
             {
                 Text = String.Format("Donate: {0}", _minAmount.ToString("C", CultureInfo.CurrentCulture)),
-                Font = Font.BoldSystemFontOfSize(40),
+                Font = Font.SystemFontOfSize(40, FontAttributes.Bold),
+                TextColor = Color.FromHex("f79848"),
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalOptions = LayoutOptions.Center
             };
             layout.Children.Add(_amountLabel);
 
-            var amount = new Stepper
+            var amount = new Slider
             {
                 Maximum = 5000,
-                Minimum = _minAmount,
-                Increment = 0.5,
-                HorizontalOptions = LayoutOptions.Center
+                Minimum = _minAmount
             };
 
-            amount.SetBinding(Stepper.ValueProperty, DonateModalViewModel.AmountPropertyName );
-            amount.SetValue(Stepper.ValueProperty, _minAmount);
             amount.ValueChanged += async (sender, e) =>
             {
                 _amountLabel.Text = String.Format("Donate: {0}", e.NewValue.ToString("C", CultureInfo.CurrentCulture));
+                viewModel.DonationAmount = e.NewValue;
             };
             layout.Children.Add(amount);
 
@@ -70,14 +69,7 @@ namespace Doloco.Pages
             account.SetBinding(Picker.SelectedIndexProperty, DonateModalViewModel.AccountIdPropertyName);
             layout.Children.Add(account);
 
-            var digicertSeal = new Image
-            {
-                Source = ImageSource.FromResource("digicert.png"),
-                Aspect = Aspect.Fill
-            };
-            layout.Children.Add(digicertSeal);
-
-            var button = new Button
+            var button = new DefaultButton
             {
                 Text = "Donate"
             };
