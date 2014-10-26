@@ -31,17 +31,6 @@ namespace Doloco
 
             var layout = new StackLayout();
 
-            var addButton = new DefaultButton
-            {
-                Text = "Add Account"
-            };
-            addButton.Clicked += async (sender, e) =>
-            {
-                await Navigation.PushModalAsync(new AddBankAccountPage());
-            };
-
-            layout.Children.Add(addButton);
-
 	        try
 	        {
 	            viewModel.Model = await App.ApiClient.GetBankAccountsAsync();
@@ -67,6 +56,17 @@ namespace Doloco
 	            await Navigation.PushAsync(verifyPage);
 	        };
             layout.Children.Add(list);
+
+            var addButton = new DefaultButton
+            {
+                Text = "Add Account"
+            };
+            addButton.Clicked += async (sender, e) =>
+            {
+                await Navigation.PushModalAsync(new AddBankAccountPage());
+            };
+
+            layout.Children.Add(addButton);
 
             Content = layout;
 	    }
