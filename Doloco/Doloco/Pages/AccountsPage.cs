@@ -59,7 +59,7 @@ namespace Doloco
 
             var addButton = new DefaultButton
             {
-                Text = "Add Account"
+                Text = "ADD ACCOUNT"
             };
             addButton.Clicked += async (sender, e) =>
             {

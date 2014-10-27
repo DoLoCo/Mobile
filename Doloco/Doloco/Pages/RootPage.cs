@@ -58,6 +58,8 @@ namespace Doloco.Pages
                     return new ExternalWebPage("http://doloco.org/policy.html");
                 case "About Us":
                     return new ExternalWebPage("http://doloco.org");
+                case "Send FeedBack":
+                    return new FeedbackPage();
                 default:
                     throw new NotImplementedException("Unknown menu option: " + option.Title);
             }

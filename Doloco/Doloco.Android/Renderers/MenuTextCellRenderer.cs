@@ -42,6 +42,7 @@ namespace Doloco.Droid.Renderers
             icon.SetMaxHeight(16);
             icon.SetMaxWidth(16);
             icon.SetScaleType(ImageView.ScaleType.CenterInside);
+            icon.Layout(20,0,0,0);
 
             var label = (TextView)((LinearLayout)cell.GetChildAt(1)).GetChildAt(0);
             label.SetTextColor(Color.FromHex("262626").ToAndroid());

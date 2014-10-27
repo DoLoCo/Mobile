@@ -55,7 +55,7 @@ namespace Doloco.Pages
 
             var createButton = new DefaultButton
             {
-                Text = "Create Circle"
+                Text = "CREATE CIRCLE"
             };
 
             createButton.Clicked += async (sender, e) =>

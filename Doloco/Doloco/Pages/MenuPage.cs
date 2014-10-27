@@ -78,7 +78,7 @@ namespace Doloco.Pages
 
             var cell = new DataTemplate(typeof(MenuTextCell));
             cell.SetBinding(TextCell.TextProperty, "Title");
-            cell.SetBinding(ImageCell.ImageSourceProperty, "IconSource");
+            cell.SetBinding(ImageCell.ImageSourceProperty, new Xamarin.Forms.Binding("IconSource"));
             cell.SetValue(BackgroundColorProperty, Color.Transparent);
             cell.SetValue(TextCell.TextColorProperty, Color.FromHex("262626"));
 

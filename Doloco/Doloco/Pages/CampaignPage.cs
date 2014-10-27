@@ -66,7 +66,7 @@ namespace Doloco.Pages
 
             var donateButton = new DefaultButton
             {
-                Text = "Donate"
+                Text = "DONATE"
             };
             donateButton.Clicked += async (sender, e) =>
             {

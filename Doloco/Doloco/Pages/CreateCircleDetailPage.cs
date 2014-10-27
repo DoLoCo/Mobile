@@ -48,7 +48,7 @@ namespace Doloco.Pages
 
             var button = new DefaultButton
             {
-                Text = "Next"
+                Text = "NEXT"
             };
             button.SetBinding(Button.CommandProperty, CreateCircleViewModel.AddCommandPropertyName);
             layout.Children.Add(button);

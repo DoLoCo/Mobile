@@ -61,7 +61,7 @@ namespace Doloco.Pages
 
             var button = new DefaultButton
             {
-                Text = "Create Campaign",
+                Text = "CREATE CAMPAIGN",
                 VerticalOptions = LayoutOptions.End
             };
             button.SetBinding(Button.CommandProperty, CreateCampaignViewModel.AddCommandPropertyName);
