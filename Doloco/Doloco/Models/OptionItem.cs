@@ -75,7 +75,7 @@ namespace Doloco.Models
     {
         public override string Title
         {
-            get { return "Send Feed Back"; }
+            get { return "Send FeedBack"; }
         }
 
         public override string Icon

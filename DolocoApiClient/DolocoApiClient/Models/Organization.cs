@@ -23,5 +23,7 @@ namespace DolocoApiClient.Models
         public DateTime UpdatedAt { get; set; }
         [JsonProperty("organization_admins")]
         public IEnumerable<OrganizationAdmin> OrganizationAdmins { get; set; }
+        [JsonProperty("image_url")]
+        public string ImageUrl { get; set; }
     }
 }

@@ -86,7 +86,7 @@ namespace Doloco.Pages
 
             var button = new DefaultButton
             {
-                Text = "Add Campaign"
+                Text = "ADD CAMPAIGN"
             };
             button.Clicked += async (sender, e) =>
             {

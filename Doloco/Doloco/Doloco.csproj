@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Helpers\UserAvatarConverter.cs" />
     <Compile Include="Helpers\BankAccountStatusIconConverter.cs" />
     <Compile Include="Helpers\Color.cs" />
     <Compile Include="Helpers\CurrencyConverter.cs" />
@@ -53,6 +54,8 @@
     <Compile Include="Pages\CreateCampaignPage.cs" />
     <Compile Include="Pages\CreateCircleDetailPage.cs" />
     <Compile Include="Pages\DonatePage.cs" />
+    <Compile Include="Pages\ExternalWebPage.cs" />
+    <Compile Include="Pages\FeedbackPage.cs" />
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Pages\LoginModalPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />

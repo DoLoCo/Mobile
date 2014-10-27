@@ -71,7 +71,7 @@ namespace Doloco.Pages
 
             var button = new DefaultButton
             {
-                Text = "Donate"
+                Text = "DONATE"
             };
             button.SetBinding(Button.CommandProperty, DonateModalViewModel.DonateCommandPropertyName);
             layout.Children.Add(button);

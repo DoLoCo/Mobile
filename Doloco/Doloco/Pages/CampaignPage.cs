@@ -59,13 +59,14 @@ namespace Doloco.Pages
             var cell = new DataTemplate(typeof(UserActionCell));
             cell.SetBinding(TextCell.TextProperty, new Binding("User.FirstName") {StringFormat = "{0} Donated:"});
             cell.SetBinding(TextCell.DetailProperty, new Binding("Amount") {Converter = new CurrencyDisplayConverter()});
+            cell.SetBinding(ImageCell.ImageSourceProperty, new Binding("User.Avatar") {Converter = new UserAvatarConverter()});
 
             var list = new ListView { ItemsSource = viewModel.DonationModel, ItemTemplate = cell };
             stack.Children.Add(list);
 
             var donateButton = new DefaultButton
             {
-                Text = "Donate"
+                Text = "DONATE"
             };
             donateButton.Clicked += async (sender, e) =>
             {

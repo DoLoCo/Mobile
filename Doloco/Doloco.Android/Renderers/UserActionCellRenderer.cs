@@ -16,11 +16,11 @@ using ListView = global::Android.Widget.ListView;
 using Android.App;
 using TextAlignment = Android.Views.TextAlignment;
 
-[assembly: ExportCell (typeof (MenuTextCell), typeof (MenuTextCellRenderer))]
+[assembly: ExportCell (typeof (UserActionCell), typeof (UserActionCellRenderer))]
 
 namespace Doloco.Droid.Renderers
 {
-    public class MenuTextCellRenderer : ImageCellRenderer
+    public class UserActionCellRenderer : ImageCellRenderer
     {
         protected override View GetCellCore (Cell item, View convertView, ViewGroup parent, Context context)
         {
@@ -39,10 +39,6 @@ namespace Doloco.Droid.Renderers
             }
 
             var icon = (ImageView)cell.GetChildAt(0);
-            icon.SetMaxHeight(16);
-            icon.SetMaxWidth(16);
-            icon.SetScaleType(ImageView.ScaleType.CenterInside);
-            icon.Layout(20,0,0,0);
 
             var label = (TextView)((LinearLayout)cell.GetChildAt(1)).GetChildAt(0);
             label.SetTextColor(Color.FromHex("262626").ToAndroid());

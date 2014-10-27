@@ -28,7 +28,7 @@ namespace Doloco.Pages
 
             var verifyButton = new DefaultButton
             {
-                Text = "Verify"
+                Text = "VERIFY"
             };
             verifyButton.SetBinding(Button.CommandProperty, VerifyBankViewModel.AddCommandPropertyName);
             layout.Children.Add(verifyButton);
