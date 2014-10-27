@@ -35,6 +35,7 @@ namespace Doloco.Droid
             FormsMaps.Init(this, bundle);
 
             InitializeLocationManager();
+/*		    App.SetMediaPicker(this);*/
 
 			SetPage (App.GetLoginPage (this));
 		}
@@ -137,13 +138,15 @@ namespace Doloco.Droid
         {
             string path = null;
             // The projection contains the columns we want to return in our query.
-            var projection = new[] { Android.Provider.MediaStore.Images.Media.InterfaceConsts.Data };
-            using (var cursor = ManagedQuery(uri, projection, null, null, null))
+            string[] projection = new[] { Android.Provider.MediaStore.Images.Media.InterfaceConsts.Data };
+            using (ICursor cursor = ManagedQuery(uri, projection, null, null, null))
             {
-                if (cursor == null) return path;
-                var columnIndex = cursor.GetColumnIndexOrThrow(Android.Provider.MediaStore.Images.Media.InterfaceConsts.Data);
-                cursor.MoveToFirst();
-                path = cursor.GetString(columnIndex);
+                if (cursor != null)
+                {
+                    int columnIndex = cursor.GetColumnIndexOrThrow(Android.Provider.MediaStore.Images.Media.InterfaceConsts.Data);
+                    cursor.MoveToFirst();
+                    path = cursor.GetString(columnIndex);
+                }
             }
             return path;
         }

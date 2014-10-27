@@ -39,6 +39,17 @@ namespace Doloco.Pages
             };
             campaignTargetDate.SetBinding(DatePicker.DateProperty, CreateCampaignViewModel.CampaignTargetDatePropertyName);
 
+/*            var campaignImage = new Label();
+            var imgButton = new Button
+            {
+                Text = "Upload Image"
+            };
+            imgButton.Clicked += async (sender, e) =>
+            {
+                var imgPath = App.MediaPicker.GetImage();
+                campaignImage.Text = imgPath;
+            };*/
+
             var targetLabel = new Label { Text = "Target Amount", HorizontalOptions = LayoutOptions.Center};
             _campaignTargetLabel = new Label
             {
@@ -74,6 +85,8 @@ namespace Doloco.Pages
                     campaignDescription,
                     targetDateLabel,
                     campaignTargetDate,
+/*                    campaignImage,
+                    imgButton,*/
                     targetLabel,
                     _campaignTargetLabel,
                     campaignTarget,
