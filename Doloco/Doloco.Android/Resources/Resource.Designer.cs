@@ -1660,20 +1660,23 @@ namespace Doloco.Droid
 			// aapt resource value: 0x7f07002c
 			public const int list_item = 2131165228;
 			
-			// aapt resource value: 0x7f070042
-			public const int media_route_control_frame = 2131165250;
-			
-			// aapt resource value: 0x7f070043
-			public const int media_route_disconnect_button = 2131165251;
-			
-			// aapt resource value: 0x7f07003f
-			public const int media_route_list = 2131165247;
-			
 			// aapt resource value: 0x7f070040
-			public const int media_route_volume_layout = 2131165248;
+			public const int mapWithOverlay = 2131165248;
+			
+			// aapt resource value: 0x7f070044
+			public const int media_route_control_frame = 2131165252;
+			
+			// aapt resource value: 0x7f070045
+			public const int media_route_disconnect_button = 2131165253;
 			
 			// aapt resource value: 0x7f070041
-			public const int media_route_volume_slider = 2131165249;
+			public const int media_route_list = 2131165249;
+			
+			// aapt resource value: 0x7f070042
+			public const int media_route_volume_layout = 2131165250;
+			
+			// aapt resource value: 0x7f070043
+			public const int media_route_volume_slider = 2131165251;
 			
 			// aapt resource value: 0x7f070012
 			public const int middle = 2131165202;
@@ -1698,6 +1701,9 @@ namespace Doloco.Droid
 			
 			// aapt resource value: 0x7f07001a
 			public const int satellite = 2131165210;
+			
+			// aapt resource value: 0x7f07003f
+			public const int searchView1 = 2131165247;
 			
 			// aapt resource value: 0x7f070035
 			public const int search_badge = 2131165237;
@@ -1876,16 +1882,19 @@ namespace Doloco.Droid
 			public const int apptheme_tab_indicator_holo = 2130903064;
 			
 			// aapt resource value: 0x7f030019
-			public const int mr_media_route_chooser_dialog = 2130903065;
+			public const int MapLayout = 2130903065;
 			
 			// aapt resource value: 0x7f03001a
-			public const int mr_media_route_controller_dialog = 2130903066;
+			public const int mr_media_route_chooser_dialog = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int mr_media_route_list_item = 2130903067;
+			public const int mr_media_route_controller_dialog = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int support_simple_spinner_dropdown_item = 2130903068;
+			public const int mr_media_route_list_item = 2130903068;
+			
+			// aapt resource value: 0x7f03001d
+			public const int support_simple_spinner_dropdown_item = 2130903069;
 			
 			static Layout()
 			{

@@ -38,6 +38,7 @@ namespace Doloco.Pages
                     {
 
                         var payload = await App.ApiClient.CreateSessionAsync(email.Text, password.Text);
+                        App.NearbyCampaigns = await App.ApiClient.GetNearbyCampaignsAsync(App.UserLatitude, App.UserLongitude);
 
                         object token;
                         object user;

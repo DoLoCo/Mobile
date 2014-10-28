@@ -47,7 +47,7 @@ namespace Doloco.Pages
             switch (option.Title)
             {
                 case "Nearby":
-                    return new HomePage();
+                    return new MapContentPage();
                 case "Circles":
                     return new CirclesPage();
                 case "Payment Info":
