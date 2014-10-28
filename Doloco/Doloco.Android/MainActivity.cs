@@ -1,23 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.Database;
 using Android.Locations;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
-using Doloco.Pages;
-using Java.Security;
 using Mindscape.Raygun4Net;
 using Xamarin;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 using Xamarin.Forms.Platform.Android;
 
 namespace Doloco.Droid
@@ -35,7 +27,7 @@ namespace Doloco.Droid
             FormsMaps.Init(this, bundle);
 
             InitializeLocationManager();
-/*		    App.SetMediaPicker(this);*/
+		    App.SetMediaPicker(this);
 
 			SetPage (App.GetLoginPage (this));
 		}
