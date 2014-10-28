@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\MapContentPageRenderer.cs" />
     <Compile Include="Renderers\UserActionCellRenderer.cs" />
     <Compile Include="Renderers\MenuTextCellRenderer.cs" />
     <Compile Include="Renderers\DarkTextCellRenderer.cs" />
@@ -110,6 +111,9 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="packages.config" />
+    <AndroidResource Include="Resources\layout\MapLayout.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\Icon.png" />
@@ -669,6 +673,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\DolocoApiClient\DolocoApiClient\DolocoApiClient.csproj">
+      <Project>{4d12cd75-a48d-4317-92cf-cc2b630ab8b5}</Project>
+      <Name>DolocoApiClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Doloco\Doloco.csproj">
       <Project>{89721E54-0AB7-4621-8B24-AD0FBB98EC30}</Project>
       <Name>Doloco</Name>

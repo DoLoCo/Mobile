@@ -17,6 +17,7 @@ namespace Doloco
 	    public static IMediaPicker MediaPicker;
 	    public static double UserLatitude;
         public static double UserLongitude;
+	    public static IEnumerable<Campaign> NearbyCampaigns; 
 	    public static readonly IDolocoApiClient ApiClient;
 	    public static User CurrentUser;
 	    public static string Token;
