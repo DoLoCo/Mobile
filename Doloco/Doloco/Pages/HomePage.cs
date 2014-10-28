@@ -54,9 +54,10 @@ namespace Doloco.Pages
             var campaignItem = new DataTemplate(typeof (StripedViewCell));
             campaignItem.SetBinding(TextCell.TextProperty, "Name");
             campaignItem.SetBinding(TextCell.DetailProperty, "Description");
+            var campaignListModel = viewModel.LoadPins(App.UserLatitude, App.UserLongitude);
             _campaignList = new StripedListView
             {
-                ItemsSource = viewModel.LoadPins(App.UserLatitude, App.UserLongitude),
+                ItemsSource = campaignListModel,
                 ItemTemplate = campaignItem
             };
             _campaignList.ItemSelected += async (sender, e) =>
