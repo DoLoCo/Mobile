@@ -28,7 +28,7 @@ namespace Doloco.Droid.Renderers
             if (e.OldElement == null)
             {
                 var entry = (EditText) Control;
-                entry.SetBackgroundResource(2130837786);
+                entry.SetBackgroundResource(Resource.Drawable.rounded_edittext);
                 entry.SetHintTextColor(Color.White.ToAndroid());
                 entry.SetTypeface(Typeface.SansSerif, TypefaceStyle.Normal);
             }

@@ -12,7 +12,7 @@ namespace DolocoApiClient
 {
     public partial class DolocoApiClient
     {
-        public Task<string> RegisterUserAsync(string email, string firsName, string lastName, string password,
+        public Task<Dictionary<string, object>> RegisterUserAsync(string email, string firsName, string lastName, string password,
             string passwordConfirmation)
         {
             var registrationUrl = GetRoutePathUrl(DolocoApiRouteEnum.Registration);
@@ -33,10 +33,17 @@ namespace DolocoApiClient
             return
                 _client.PostAsync<SessionPayload>(registrationUrl, registrationPayload)
 					.Process(payload => {
-						Token = payload.Token;
-						_client.SetToken(Token);
+                        Token = payload.Token;
+                        _client.SetToken(Token);
 
-						return payload.Token;
+                        var user = JsonConvert.DeserializeObject<User>(payload.User);
+                        var newPayload = new Dictionary<string, object>{
+			        {"Token",payload.Token},
+			        {"User", user}
+			   };
+
+
+                        return newPayload;
 					});
         }
     }

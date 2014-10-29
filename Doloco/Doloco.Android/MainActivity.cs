@@ -9,7 +9,9 @@ using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.Locations;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
+using Doloco.Pages;
 using Mindscape.Raygun4Net;
 using Xamarin;
 using Xamarin.Forms;
@@ -29,11 +31,31 @@ namespace Doloco.Droid
 			Forms.Init (this, bundle);
             FormsMaps.Init(this, bundle);
 
+            ActionBar.SetHomeButtonEnabled(true);
+            ActionBar.SetDisplayHomeAsUpEnabled(true);
+
             InitializeLocationManager();
 		    App.SetMediaPicker(this);
 
 			SetPage (App.GetLoginPage (this));
 		}
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.main, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.show_circle_list:
+                    SetPage(new CirclesPage());
+                    return true;
+            }
+            return base.OnOptionsItemSelected(item);
+        }
 
         #region ILoginManager implementation
 

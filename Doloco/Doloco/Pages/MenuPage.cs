@@ -27,7 +27,7 @@ namespace Doloco.Pages
             OptionItems.Add(new PrivacyOptionItem());
             OptionItems.Add(new TermsOptionItem());
             OptionItems.Add(new FeedbackOptionItem());
-            OptionItems.Add(new AboutOptionItem());
+/*            OptionItems.Add(new AboutOptionItem());*/
 
             BackgroundColor = Color.FromHex("ffffff");
 

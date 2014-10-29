@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 using Android.App;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
+using Android.Support.V4.Widget;
 using Android.Views;
+using Android.Widget;
 using Doloco.Droid.Renderers;
 using Doloco.Pages;
 using DolocoApiClient.Models;
@@ -17,6 +19,7 @@ using Xamarin.Forms.Maps;
 using Xamarin.Forms.Platform.Android;
 using Button = Android.Widget.Button;
 using Color = Xamarin.Forms.Color;
+using SearchView = Android.Support.V7.Widget.SearchView;
 
 [assembly: ExportRenderer(typeof(MapContentPage), typeof(MapContentPageRenderer))]
 
@@ -31,6 +34,7 @@ namespace Doloco.Droid.Renderers
         private IEnumerable<Campaign> _campaigns;
         private Activity _activity;
         private MapContentPage _page;
+        private SearchView _searchView;
 
         protected override void OnElementChanged(ElementChangedEventArgs<Page> e)
         {
@@ -49,8 +53,10 @@ namespace Doloco.Droid.Renderers
                     _campaigns = page.NearbyCampaigns;
                     _page = page;
                 }
+                _searchView = (SearchView) _activity.FindViewById(Resource.Id.mapSearch);
                 InitMapFragment();
                 SetupMapIfNeeded();
+                SetupSearchView();
             }
         }
 
@@ -82,7 +88,7 @@ namespace Doloco.Droid.Renderers
 
             if (_map != null)
             {
-                ZoomToLocation();
+                ZoomToLocation(_initLatLng);
 
                 if(_campaigns != null)
                     AddCampaignsToMap();
@@ -112,9 +118,9 @@ namespace Doloco.Droid.Renderers
             _map.AddMarker(markerOptions);
         }
 
-        private void ZoomToLocation()
+        private void ZoomToLocation(LatLng position)
         {
-            var cameraPosition = new CameraPosition.Builder().Target(_initLatLng).Zoom(14.0f).Build();
+            var cameraPosition = new CameraPosition.Builder().Target(position).Zoom(14.0f).Build();
             var cameraUpdate = CameraUpdateFactory.NewCameraPosition(cameraPosition);
             _map.MoveCamera(cameraUpdate);
         }
@@ -137,6 +143,17 @@ namespace Doloco.Droid.Renderers
             {
                 var campaignPage = new CampaignPage(selCampaign.Id, selCampaign.OrganizationId);
                 _page.Navigation.PushAsync(campaignPage);
+            }
+        }
+
+        public void SetupSearchView()
+        {
+            if (_searchView != null)
+            {
+                _searchView.QueryTextSubmit += async (sender, e) =>
+                {
+                    Console.WriteLine(e.Query);
+                };
             }
         }
     }

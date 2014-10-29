@@ -15,6 +15,7 @@ namespace Doloco.Pages
         {
             login = new LoginPage(ilm);
             create = new CreateAccountPage(ilm);
+         
             this.Children.Add(login);
             this.Children.Add(create);
             this.BackgroundColor = Helpers.Color.FromHex(0xf79748).ToFormsColor();

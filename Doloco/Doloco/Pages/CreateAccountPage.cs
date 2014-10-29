@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Doloco.Views;
+using DolocoApiClient.Models;
 using Xamarin.Forms;
 
 namespace Doloco.Pages
@@ -38,11 +39,20 @@ namespace Doloco.Pages
                 {
                     try
                     {
-                        var token =
+                        var payload =
                             await
                                 App.ApiClient.RegisterUserAsync(email.Text, firstName.Text, lastName.Text, password.Text,
                                     passwordConfirm.Text);
-                        App.Token = token;
+
+                        object token;
+                        object user;
+                        payload.TryGetValue("Token", out token);
+                        payload.TryGetValue("User", out user);
+
+                        App.Token = (string)token;
+                        App.CurrentUser = (User)user;
+
+                        App.NearbyCampaigns = await App.ApiClient.GetNearbyCampaignsAsync(App.UserLatitude, App.UserLongitude);
 
                         ilm.ShowMainPage();
                     }

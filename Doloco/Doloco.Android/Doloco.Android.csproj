@@ -114,6 +114,8 @@
     <AndroidResource Include="Resources\layout\MapLayout.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\Drawable\cirlcebaricon.png" />
+    <AndroidResource Include="Resources\menu\main.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\Icon.png" />
@@ -674,7 +676,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\DolocoApiClient\DolocoApiClient\DolocoApiClient.csproj">
-      <Project>{4d12cd75-a48d-4317-92cf-cc2b630ab8b5}</Project>
+      <Project>{4D12CD75-A48D-4317-92CF-CC2B630AB8B5}</Project>
       <Name>DolocoApiClient</Name>
     </ProjectReference>
     <ProjectReference Include="..\Doloco\Doloco.csproj">
@@ -692,4 +694,7 @@
   </Target>
   -->
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Resources\menu\" />
+  </ItemGroup>
 </Project>

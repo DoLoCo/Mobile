@@ -9,7 +9,7 @@ namespace DolocoApiClient
 	public interface IDolocoApiClient
 	{
         string TestCreateSession();
-        Task<string> RegisterUserAsync(string email, string firsName, string lastName, string password,
+        Task<Dictionary<string, object>> RegisterUserAsync(string email, string firsName, string lastName, string password,
             string passwordConfirmation);
         Task<Dictionary<string, object>> CreateSessionAsync(string email, string password);
 		Task<IEnumerable<Organization>> GetMyOrganizationsAsync ();

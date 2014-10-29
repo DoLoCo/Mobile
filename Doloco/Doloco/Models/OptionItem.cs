@@ -16,7 +16,7 @@ namespace Doloco.Models
 
         public override string Icon
         {
-            get { return "map49.png"; }
+            get { return "about.png"; }
         }
     }
 
