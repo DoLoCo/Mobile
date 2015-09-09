@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{89721E54-0AB7-4621-8B24-AD0FBB98EC30}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Doloco</RootNamespace>
+    <AssemblyName>Doloco</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>460f5d16</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.cs" />
+    <Compile Include="Helpers\UserAvatarConverter.cs" />
+    <Compile Include="Helpers\BankAccountStatusIconConverter.cs" />
+    <Compile Include="Helpers\Color.cs" />
+    <Compile Include="Helpers\CurrencyConverter.cs" />
+    <Compile Include="Helpers\FullNameConverter.cs" />
+    <Compile Include="Helpers\ImageStreamValueConverter.cs" />
+    <Compile Include="ILoginManager.cs" />
+    <Compile Include="IMediaPicker.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="Models\OptionItem.cs" />
+    <Compile Include="Pages\CreateCircleBankAccountPage.cs" />
+    <Compile Include="Pages\CampaignPage.cs" />
+    <Compile Include="Pages\CirclePage.cs" />
+    <Compile Include="Pages\CreateAccountPage.cs" />
+    <Compile Include="Pages\CreateCampaignPage.cs" />
+    <Compile Include="Pages\CreateCircleDetailPage.cs" />
+    <Compile Include="Pages\DonatePage.cs" />
+    <Compile Include="Pages\ExternalWebPage.cs" />
+    <Compile Include="Pages\FeedbackPage.cs" />
+    <Compile Include="Pages\HomePage.cs" />
+    <Compile Include="Pages\LoginModalPage.cs" />
+    <Compile Include="Pages\LoginPage.cs" />
+    <Compile Include="Pages\MapContentPage.cs" />
+    <Compile Include="Pages\MenuPage.cs" />
+    <Compile Include="Pages\RootPage.cs" />
+    <Compile Include="Pages\SettingsPage.cs" />
+    <Compile Include="Pages\VerifyBankPage.cs" />
+    <Compile Include="ViewModel\AddCircleAccountViewModel.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\CampaignMapViewModel.cs" />
+    <Compile Include="ViewModel\CampaignViewModel.cs" />
+    <Compile Include="ViewModel\CircleViewModel.cs" />
+    <Compile Include="ViewModel\CreateCampaignViewModel.cs" />
+    <Compile Include="ViewModel\CreateCircleViewModel.cs" />
+    <Compile Include="ViewModel\DonateModalViewModel.cs" />
+    <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="ViewModel\VerifyBankViewModel.cs" />
+    <Compile Include="Views\DefaultButton.cs" />
+    <Compile Include="Views\MenuTextCell.cs" />
+    <Compile Include="Views\ListTextCell.cs" />
+    <Compile Include="Views\DarkTextCell.cs" />
+    <Compile Include="ViewModel\SettingsViewModel.cs" />
+    <Compile Include="Pages\AccountsPage.cs" />
+    <Compile Include="ViewModel\AccountsViewModel.cs" />
+    <Compile Include="Pages\AddBankAccountPage.cs" />
+    <Compile Include="ViewModel\AddAccountViewModel.cs" />
+    <Compile Include="ViewModel\CirclesViewModel.cs" />
+    <Compile Include="Pages\CirclesPage.cs" />
+    <Compile Include="Views\RoundedEntry.cs" />
+    <Compile Include="Views\StripedListView.cs" />
+    <Compile Include="Views\StripedViewCell.cs" />
+    <Compile Include="Views\UserActionCell.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\..\packages\Xamarin.Forms.1.2.2.6243\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.2.2.6243\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.targets')" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\DolocoApiClient\DolocoApiClient\DolocoApiClient.csproj">
+      <Project>{4D12CD75-A48D-4317-92CF-CC2B630AB8B5}</Project>
+      <Name>DolocoApiClient</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>..\..\packages\Xamarin.Forms.1.2.2.6243\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>..\..\packages\Xamarin.Forms.1.2.2.6243\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Maps">
+      <HintPath>..\..\packages\Xamarin.Forms.Maps.1.2.2.6243\lib\portable-win+net45+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.Maps.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

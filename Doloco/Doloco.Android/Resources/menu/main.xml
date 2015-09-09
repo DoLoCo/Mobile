@@ -1,0 +1,7 @@
+﻿<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/show_circle_list"
+          android:showAsAction="always"
+          android:icon="@drawable/cirlcebaricon"
+          android:title="Circles"
+          android:visible="true"/>
+</menu>
